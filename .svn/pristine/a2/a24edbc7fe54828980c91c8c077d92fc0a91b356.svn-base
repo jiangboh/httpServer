@@ -1,0 +1,785 @@
+2017/12/22_10:31str
+2017/12/22_10:31str
+2017/12/22_10:31str
+2017/12/22_10:31str
+[2017/12/22-10:32] str
+[2017/12/22-10:32] str
+[2017/12/22-10:32] str
+[2017/12/22-10:33:22] str
+[2017/12/22-10:33:22] str
+[2017/12/22-10:33:54] str
+[2017/12/22-16:29:27] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:28] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:29] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:30] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:32] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:33] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:34] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:36] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:37] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:29:38] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:37] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:38] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:39] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:40] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:42] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:43] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:44] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:45] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:46] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:52] postUrl2Ap:无法连接到远程服务器
+[2017/12/22-16:30:54] postUrl2Ap:无法连接到远程服务器
+[2017/12/25-9:38:42] postUrl2Ap:无法连接到远程服务器
+[2017/12/25-15:25:09] postUrl2Ap:无法连接到远程服务器
+[2017/12/25-18:35:37] postUrl2Ap:无法连接到远程服务器
+[2017/12/25-18:38:15] postUrl2Ap:无法连接到远程服务器
+[2017/12/25-18:44:46] postUrl2Ap:无法连接到远程服务器
+[2017/12/26-9:19:06] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:07] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:07] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:08] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:08] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:09] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:09] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:10] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:10] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:11] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:11] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:11] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:12] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:13] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:19:13] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:25:27] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:38:20] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:39:13] 任务类型为SetParameterValuesTask。暂不支持该任务。
+[2017/12/26-9:42:46] postUrl2Ap:无法连接到远程服务器
+[2017/12/26-17:00:17] postUrl2Ap:无法连接到远程服务器
+[2017/12/27-14:49:34] str
+[2017/12/27-14:51:21] str
+[2017/12/27-14:51:22] str
+[2017/12/27-14:51:22] str
+[2017/12/27-14:51:23] str
+[2017/12/27-14:51:23] str
+[2017/12/27-14:51:55] str
+[2017/12/27-14:51:59] str
+[2018/1/2-13:45:25] str
+[2018/1/2-13:45:31] str
+[2018/1/2-14:12:41] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:58] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:58] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:58] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:58] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:58] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:59] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:59] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:59] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:59] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:12:59] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:00] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:00] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:00] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:00] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:00] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:01] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:01] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:01] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:01] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:02] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:02] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:02] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:02] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:02] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:03] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:03] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:03] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:03] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:03] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:04] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:04] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:04] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:04] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:04] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:05] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:05] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:05] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:05] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(UPDATE aptask SET setParameterValuesStatus='4' WHERE SN='EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT getParameterValuesStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT setParameterValuesStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT upgradTaskStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT getLogTaskStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:06] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:07] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:07] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:07] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:07] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:07] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT getParameterValuesStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT setParameterValuesStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT upgradTaskStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:08] 执行Sql语名(SELECT getLogTaskStatus FROM aptask WHERE SN = 'EN1800S116340039')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:09] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:09] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:09] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:09] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:09] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:10] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:10] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:10] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:10] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:10] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:11] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:11] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:11] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:11] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:11] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:12] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:12] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:12] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:12] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:12] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:13] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:13] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:13] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:13] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:14] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:14] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:14] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:14] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:14] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:15] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:15] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:15] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:15] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:15] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:16] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:16] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:16] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:16] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:16] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:17] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:17] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:17] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:17] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:18] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:18] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:18] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:18] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:18] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:19] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:19] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:19] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:19] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:19] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:20] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:20] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:20] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:20] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:20] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:21] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:21] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:21] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:21] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:22] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:22] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:22] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:22] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:22] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:23] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:23] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:23] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:23] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:24] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:24] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:24] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:24] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:24] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:25] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:25] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:25] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:25] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:25] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:26] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:26] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:26] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:26] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:27] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:27] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:27] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:27] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:27] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:28] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:28] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:28] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:28] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:29] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:29] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:29] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:29] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:29] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:30] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:30] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:30] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:30] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:31] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:31] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:31] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:31] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:31] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:32] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:32] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:32] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:32] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:32] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:33] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:33] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:33] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:33] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:34] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:34] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:34] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:34] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:34] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:35] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:35] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:35] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:35] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:36] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:36] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:36] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:36] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:36] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:37] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:37] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:37] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:37] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:38] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:38] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:38] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:38] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:38] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:39] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:39] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:39] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:39] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:40] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:40] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:40] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:40] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:40] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:41] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:41] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:41] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:41] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:41] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:42] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:43] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:44] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:45] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:46] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:47] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:48] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:49] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:50] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:51] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:52] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:53] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:54] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:55] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:56] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:57] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:13:58] 执行Sql语名(SELECT SN FROM aptask WHERE upgradTaskStatus = '1' OR getLogTaskStatus = '1' OR getParameterValuesStatus = '1' OR setParameterValuesStatus = '1')出错，出错消息：Table 'hsdatabase.aptask' doesn't exist。
+[2018/1/2-14:23:11] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:11] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:11] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:11] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:11] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:11] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:11] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:11] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:12] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:12] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:12] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:12] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:12] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:12] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:12] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:12] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:12] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:12] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:13] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:13] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:13] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:13] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:13] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:13] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:13] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:13] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:14] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:14] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:14] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:14] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:14] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:14] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:14] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:14] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:14] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:14] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:15] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:15] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:15] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:15] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:15] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:15] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:15] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:15] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:16] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:16] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:16] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:16] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:16] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:16] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:16] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:16] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:16] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:16] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:17] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:17] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:17] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:17] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:17] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:17] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:17] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:17] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:18] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:18] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:18] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:18] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:18] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:18] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:18] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:18] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:18] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:18] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:19] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:19] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:19] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:19] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:19] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:19] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:19] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:19] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:20] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:20] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:20] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:20] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:20] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:20] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:20] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:20] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:20] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:20] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:21] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:21] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:21] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:21] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:21] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:21] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:21] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:21] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:22] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:22] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:22] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:22] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:22] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:22] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:22] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:22] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:22] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:22] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:23] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:23] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:23] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:23] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:23] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:23] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:23] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:23] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:24] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:24] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:24] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:24] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:24] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:24] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:24] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:24] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:24] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:24] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:25] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:25] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:25] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:25] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:25] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:25] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:25] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:25] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:25] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:25] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:26] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:26] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:26] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:26] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:26] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:26] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:26] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:26] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:27] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:27] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:27] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:27] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:27] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:27] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:27] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:27] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:27] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:27] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:28] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:28] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:28] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:28] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:28] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:28] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:28] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:28] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:29] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:29] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:29] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:29] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:29] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:29] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:29] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:29] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:29] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:29] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:30] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:30] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:30] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:30] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:30] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:30] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:30] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:30] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:31] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:31] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:31] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:31] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:31] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:31] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:31] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:31] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:31] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:31] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:32] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:32] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:32] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:32] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:32] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:32] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:32] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:32] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:33] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:33] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:33] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:33] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:33] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:33] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:33] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:33] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:33] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:33] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:34] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:34] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:34] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:34] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:34] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:34] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:34] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:34] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:34] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:34] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:35] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:35] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:35] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:35] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:35] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:35] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:35] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:35] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:36] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:36] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:36] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:36] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:36] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:36] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:36] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:36] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:36] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:36] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:37] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:37] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:37] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:37] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:37] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:37] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:37] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:37] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:38] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:38] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:38] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:38] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:38] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:38] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:38] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:38] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:38] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:38] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:39] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:39] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:39] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:39] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:39] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:39] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:39] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:39] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:40] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:40] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:40] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:40] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:40] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:40] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:40] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:40] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:40] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:40] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:41] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:41] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:41] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:41] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:41] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:41] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:41] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:41] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:41] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:41] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:42] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:42] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:42] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:42] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:42] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:42] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:42] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:42] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:43] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:43] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:43] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:43] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:43] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:43] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:43] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:43] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:43] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:43] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:44] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:44] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:44] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:44] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:44] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:44] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:44] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:44] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:45] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:45] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:45] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:45] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:45] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:45] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:45] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:45] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:45] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:45] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:46] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:46] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:46] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:46] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:46] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:46] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:46] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:46] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:47] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:47] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:47] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:47] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:23:47] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:23:47] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:23] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:23] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:24] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:24] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:25] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:25] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:26] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:26] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:26] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:26] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:27] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:27] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:28] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:28] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:31] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:31] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:26:33] 执行Sql语名(SELECT url, userName, psw FROM apaction WHERE sn ='EN1800S116340039')出错，出错消息：Unknown column 'url' in 'field list'。
+[2018/1/2-14:26:33] 获取到的Url为空，不向该AP(EN1800S116340039)发送请求消息！
+[2018/1/2-14:29:59] postUrl2Ap:无法连接到远程服务器
+[2018/1/2-14:30:44] postUrl2Ap:无法连接到远程服务器
+[2018/1/2-14:32:35] postUrl2Ap:无法连接到远程服务器

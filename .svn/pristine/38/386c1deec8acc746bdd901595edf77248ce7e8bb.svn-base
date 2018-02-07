@@ -1,0 +1,218 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Web;
+
+namespace httpServer
+{
+    class HttpHandle
+    {
+        static public List<SnIpPortNode> snList;
+
+        public void run()
+        {
+            HttpListener httpListenner;
+            httpListenner = new HttpListener();
+            httpListenner.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
+
+            httpListenner.Prefixes.Add("http://+:8080/");
+            try
+            {
+                httpListenner.Start();
+            }
+            catch (Exception ex)
+            {
+                Log.WriteCrash(ex);
+                GlobalParameter.httpServerRun = false;
+            }
+
+            snList = new List<SnIpPortNode>();
+
+            new Thread(new ThreadStart(delegate {
+                try
+                {
+                    loop(httpListenner);
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteCrash(ex);
+                    GlobalParameter.httpServerRun = false;
+                }
+            })).Start();
+        }
+
+        static public void postUrl2Ap(ConnectUrlInfo urlInfo)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlInfo.Url);
+            request.Method = "GET";
+            request.Credentials = new NetworkCredential(urlInfo.Name, urlInfo.Passwd);
+            request.KeepAlive = true;
+
+            try
+            {
+                WebResponse response = request.GetResponse();
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    while (reader.Peek() != -1)
+                    {
+                        Console.WriteLine(reader.ReadLine());
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteError("postUrl2Ap:" + ex.Message);
+            }
+        }
+
+        private void loop(HttpListener httpListenner)
+        {
+            while (GlobalParameter.httpServerRun)
+            {
+                HttpListenerContext context = httpListenner.GetContext();
+                HttpListenerRequest request = context.Request;
+                HttpListenerResponse response = context.Response;
+
+                Servlet servlet = new MyServlet();
+                servlet.onCreate();
+
+                if (request.HttpMethod == "POST")
+                {
+                    servlet.onPost(request, response);
+                    response.Close();
+                }
+                else if (request.HttpMethod == "GET")
+                {
+                    servlet.onGet(request, response);
+                    response.Close();
+                }
+            }
+            httpListenner.Stop();
+            Application.Exit();
+        }
+
+        public class SnIpPortNode
+        {
+            public String sn;
+            public String ip;
+            public int port;
+        }
+
+        static public void addSnIpPortNode(SnIpPortNode snIpPort)
+        {
+            foreach (SnIpPortNode x in snList)
+            {
+                if (String.Compare(x.sn ,snIpPort.sn , true) == 0)
+                {
+                    snList.Remove(x);
+                    break;
+               }
+            }
+            snList.Add(snIpPort);
+        }
+
+        static public String getSnForSnIpPortNode(String ip,int port)
+        {
+            foreach (SnIpPortNode x in snList)
+            {
+                if (String.Compare(x.ip,ip, true) == 0 && x.port == port)
+                {
+                    return x.sn;
+                }
+            }
+            return "";
+        }
+
+        public class Servlet
+        {
+            public virtual void onGet(System.Net.HttpListenerRequest request, System.Net.HttpListenerResponse response) { }
+            public virtual void onPost(System.Net.HttpListenerRequest request, System.Net.HttpListenerResponse response) { }
+            public virtual void onCreate() { }
+        }
+
+        public class MyServlet : HttpHandle.Servlet
+        {
+            public override void onCreate()
+            {
+                base.onCreate();
+            }
+
+            public override void onGet(HttpListenerRequest request, HttpListenerResponse response)
+            {
+                /*
+                Console.WriteLine("GET:" + request.Url);
+                byte[] buffer = XmlHandle.CreateInformResponseXmlFile();//Encoding.UTF8.GetBytes("OK");
+
+                System.IO.Stream output = response.OutputStream;
+                output.Write(buffer, 0, buffer.Length);
+                // You must close the output stream.
+                output.Close();
+                //listener.Stop();
+                */
+                onPost(request,response);
+            }
+
+            public override void onPost(HttpListenerRequest request, HttpListenerResponse response)
+            {
+                Console.WriteLine("POST:" + request.Url);
+
+                if (!request.HasEntityBody)
+                {
+
+                    String ip = request.RemoteEndPoint.Address.ToString();
+                    int port = request.RemoteEndPoint.Port;
+
+                    byte[] xml = new DateBaseHandle().GetTaskBySN(getSnForSnIpPortNode(ip, port));
+                    if (xml.Length <= 0)
+                    {
+                        response.ContentLength64 = 0; //回复空post
+                    }
+                    else
+                    {
+                        response.OutputStream.Write(xml, 0, xml.Length);
+                    }
+                    //MessageBox.Show("yyyy:" + ip + ":" + port + "  " + getSnForSnIpPortNode(ip,port));
+                }
+                else
+                {
+                    //接收POST参数
+                    Stream stream = request.InputStream;
+                    System.IO.StreamReader reader = new System.IO.StreamReader(stream, Encoding.UTF8);
+                    //String body = reader.ReadToEnd();
+                    XmlParameterStruct parameterStruct = new XmlParameterStruct();
+                    parameterStruct = new XmlHandle().HandleRecvApMsg(reader.ReadToEnd());
+
+                    if (String.Compare(parameterStruct.Method, "Cwmp:Inform", true) == 0)
+                    {
+                        SnIpPortNode snIpPort = new SnIpPortNode();
+                        snIpPort.sn = parameterStruct.xmlInform.SN;
+                        snIpPort.ip = request.RemoteEndPoint.Address.ToString();
+                        snIpPort.port = request.RemoteEndPoint.Port;
+
+                        HttpHandle.addSnIpPortNode(snIpPort);
+
+                        byte[] res = XmlHandle.CreateInformResponseXmlFile();// Encoding.UTF8.GetBytes("OK");
+                        response.OutputStream.Write(res, 0, res.Length);
+                    }
+                    else if (String.Compare(parameterStruct.Method, "Cwmp:GetParameterValuesResponse", true) == 0)
+                    {
+                        response.ContentLength64 = 0; //回复空post
+                    }
+                }
+
+            }
+
+            
+
+
+        }
+    }
+}

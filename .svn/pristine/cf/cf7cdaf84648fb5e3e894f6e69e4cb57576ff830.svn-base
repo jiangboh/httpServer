@@ -1,0 +1,352 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+using System.Web;
+
+namespace httpServer
+{
+    class HttpHandle
+    {
+        static public List<SnIpPortNode> snList;
+
+        public void RunHttpServerThread()
+        {
+            HttpListener httpListenner;
+            httpListenner = new HttpListener();
+            httpListenner.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
+
+            httpListenner.Prefixes.Add("http://+:8080/");
+            try
+            {
+                httpListenner.Start();
+            }
+            catch (Exception ex)
+            {
+                Log.WriteCrash(ex);
+                GlobalParameter.httpServerRun = false;
+            }
+
+            snList = new List<SnIpPortNode>();
+
+            new Thread(new ThreadStart(delegate {
+                try
+                {
+                    loop(httpListenner);
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteCrash(ex);
+                    GlobalParameter.httpServerRun = false;
+                }
+            })).Start();
+        }
+
+        static public void postUrl2Ap(ConnectUrlInfo urlInfo)
+        {
+            if (urlInfo.Url.Length <= 0 )
+            {
+                Log.WriteWarning("获取到的Url为空，不向该");
+            }
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(urlInfo.Url);
+            request.Method = "GET";
+            request.Credentials = new NetworkCredential(urlInfo.Name, urlInfo.Passwd);
+            request.KeepAlive = true;
+
+            try
+            {
+                WebResponse response = request.GetResponse();
+                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                {
+                    while (reader.Peek() != -1)
+                    {
+                        Console.WriteLine(reader.ReadLine());
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteError("postUrl2Ap:" + ex.Message);
+            }
+        }
+
+        private void loop(HttpListener httpListenner)
+        {
+            while (GlobalParameter.httpServerRun)
+            {
+                HttpListenerContext context = httpListenner.GetContext();
+                HttpListenerRequest request = context.Request;
+                HttpListenerResponse response = context.Response;
+
+                Servlet servlet = new MyServlet();
+                servlet.onCreate();
+
+                if (request.HttpMethod == "POST")
+                {
+                    servlet.onPost(request, response);
+                    response.Close();
+                }
+                else if (request.HttpMethod == "GET")
+                {
+                    servlet.onGet(request, response);
+                    response.Close();
+                }
+            }
+            httpListenner.Stop();
+            Application.Exit();
+        }
+
+        public class SnIpPortNode
+        {
+            public String sn;
+            public String ip;
+            public int port;
+            public String[] EventCode;
+
+            public SnIpPortNode()
+            {
+                EventCode = new String[8];
+            }
+        }
+
+        static public void addSnIpPortNode(SnIpPortNode snIpPort)
+        {
+            foreach (SnIpPortNode x in snList)
+            {
+                if (String.Compare(x.sn ,snIpPort.sn , true) == 0)
+                {
+                    snList.Remove(x);
+                    break;
+               }
+            }
+            //snList.RemoveAt
+            snList.Add(snIpPort);
+        }
+
+        static public SnIpPortNode getSnForSnIpPortNode(String ip,int port)
+        {
+            foreach (SnIpPortNode x in snList)
+            {
+                if (String.Compare(x.ip,ip, true) == 0 && x.port == port)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+
+        public class Servlet
+        {
+            public virtual void onGet(System.Net.HttpListenerRequest request, System.Net.HttpListenerResponse response) { }
+            public virtual void onPost(System.Net.HttpListenerRequest request, System.Net.HttpListenerResponse response) { }
+            public virtual void onCreate() { }
+        }
+
+        public class MyServlet : HttpHandle.Servlet
+        {
+            public override void onCreate()
+            {
+                base.onCreate();
+            }
+
+            public override void onGet(HttpListenerRequest request, HttpListenerResponse response)
+            {
+                /*
+                Console.WriteLine("GET:" + request.Url);
+                byte[] buffer = XmlHandle.CreateInformResponseXmlFile();//Encoding.UTF8.GetBytes("OK");
+
+                System.IO.Stream output = response.OutputStream;
+                output.Write(buffer, 0, buffer.Length);
+                // You must close the output stream.
+                output.Close();
+                //listener.Stop();
+                */
+                onPost(request,response);
+            }
+
+            private byte[] NextSendMsgHandle(String ip,int port)
+            {
+                byte[] xml;
+
+                SnIpPortNode snipNode = getSnForSnIpPortNode(ip, port);
+                if (snipNode == null)
+                {
+                    xml = Encoding.UTF8.GetBytes(""); //回复空post
+                }
+                else
+                {
+                    DateBaseHandle db = new DateBaseHandle();
+                    db.open();
+                    TaskType taskType= TaskType.GetLogTask;
+                    xml = db.GetTaskBySN(ref taskType,snipNode.sn);
+                    if (xml.Length > 0)
+                    {
+                        db.SetApTaskStatusBySN(snipNode.sn, taskType, TaskStatus.SendTask);
+                    }
+                    db.close();   
+                }
+
+                return xml;
+            }
+
+            private byte[] RecvEmptyMsgHandle(String ip, int port)
+            {
+                byte[] xml;
+
+                SnIpPortNode snipNode = getSnForSnIpPortNode(ip, port);
+                if (snipNode == null)
+                {
+                    xml = Encoding.UTF8.GetBytes(""); //回复空post
+                }
+                else
+                {
+                    bool is1Boot = false;
+                    foreach (String code in snipNode.EventCode)
+                    {
+                        if (String.Compare(code, InformEventCode.BOOT, true) == 0)
+                        {
+                            is1Boot = true;
+                            break;
+                        }
+                    }
+                    if (is1Boot)
+                    {
+                        xml = XmlHandle.Create_1BOOT_InformResponse();
+                        //xml = XmlHandle.XmlGetLocalFile();
+                    }
+                    else
+                    {
+                        DateBaseHandle db = new DateBaseHandle();
+                        db.open();
+                        TaskType taskType = TaskType.TaskNull;
+                        xml = db.GetTaskBySN(ref taskType, snipNode.sn);
+                        if ((xml.Length > 0) && (taskType != TaskType.TaskNull))
+                        {
+                            db.SetApTaskStatusBySN(snipNode.sn, taskType, TaskStatus.SendTask);
+                        }
+                        db.close();
+                    }
+                }
+
+                return xml;
+            }
+            public override void onPost(HttpListenerRequest request, HttpListenerResponse response)
+            {
+                Console.WriteLine("POST:" + request.Url);
+
+                String ip = request.RemoteEndPoint.Address.ToString();
+                int port = request.RemoteEndPoint.Port;
+
+                if (!request.HasEntityBody)
+                {
+                    byte[] xml = RecvEmptyMsgHandle(ip,port);
+                    if (xml.Length <= 0)
+                    {
+                        response.ContentLength64 = 0; //回复空post
+                    }
+                    else
+                    {
+                        response.OutputStream.Write(xml, 0, xml.Length);
+                    }
+                    //MessageBox.Show("yyyy:" + ip + ":" + port + "  " + getSnForSnIpPortNode(ip,port));
+                }
+                else
+                {
+                    //接收POST参数
+                    Stream stream = request.InputStream;
+                    System.IO.StreamReader reader = new System.IO.StreamReader(stream, Encoding.UTF8);
+                    //String body = reader.ReadToEnd();
+                    XmlParameterStruct parameterStruct = new XmlParameterStruct();
+                    parameterStruct = new XmlHandle().HandleRecvApMsg(reader.ReadToEnd());
+
+                    if (String.Compare(parameterStruct.Method,RPCMethod.Inform, true) == 0)
+                    {
+                        SnIpPortNode snIpPort = new SnIpPortNode();
+                        snIpPort.sn = parameterStruct.xmlInform.SN;
+                        snIpPort.ip = request.RemoteEndPoint.Address.ToString();
+                        snIpPort.port = request.RemoteEndPoint.Port;
+                        snIpPort.EventCode = parameterStruct.xmlInform.EventCode;
+
+                        HttpHandle.addSnIpPortNode(snIpPort);
+
+                        byte[] res = XmlHandle.CreateInformResponseXmlFile();// Encoding.UTF8.GetBytes("OK");
+                        response.OutputStream.Write(res, 0, res.Length);
+                    }
+                    else if (String.Compare(parameterStruct.Method, RPCMethod.GetParameterValuesResponse, true) == 0)
+                    {
+                        SnIpPortNode snipNode = getSnForSnIpPortNode(ip, port);
+                        if (snipNode != null)
+                        {
+                            DateBaseHandle db = new DateBaseHandle();
+                            db.open();
+                            db.SetApTaskStatusBySN(snipNode.sn, TaskType.GetParameterValuesTask, TaskStatus.ReponseOk);
+                            db.close();
+                        }
+                        byte[] xml = NextSendMsgHandle(ip, port);
+                        if (xml.Length <= 0)
+                        {
+                            response.ContentLength64 = 0; //回复空post
+                        }
+                        else
+                        {
+                            response.OutputStream.Write(xml, 0, xml.Length);
+                        }
+                    }
+                    else if (String.Compare(parameterStruct.Method, RPCMethod.SetParameterValuesResponse, true) == 0)
+                    {
+                        SnIpPortNode snipNode = getSnForSnIpPortNode(ip, port);
+                        if (snipNode != null)
+                        {
+                            DateBaseHandle db = new DateBaseHandle();
+                            db.open();
+                            db.SetApTaskStatusBySN(snipNode.sn, TaskType.SetParameterValuesTask, TaskStatus.ReponseOk);
+                            db.close();
+                        }
+                        byte[] xml = NextSendMsgHandle(ip, port);
+                        if (xml.Length <= 0)
+                        {
+                            response.ContentLength64 = 0; //回复空post
+                        }
+                        else
+                        {
+                            response.OutputStream.Write(xml, 0, xml.Length);
+                        }
+                    }
+                    else if (String.Compare(parameterStruct.Method, RPCMethod.TransferComplete, true) == 0)
+                    {
+                        SnIpPortNode snipNode = getSnForSnIpPortNode(ip, port);
+                        if (snipNode != null)
+                        {
+                            DateBaseHandle db = new DateBaseHandle();
+                            db.open();
+                            db.SetApTaskStatusBySN(snipNode.sn, TaskType.GetLogTask, TaskStatus.ReponseOk);
+                            db.close();
+                        }
+                        byte[] xml = NextSendMsgHandle(ip, port);
+                        if (xml.Length <= 0)
+                        {
+                            response.ContentLength64 = 0; //回复空post
+                        }
+                        else
+                        {
+                            response.OutputStream.Write(xml, 0, xml.Length);
+                        }
+                    }
+                
+                }
+
+            }
+
+            
+
+
+        }
+    }
+}
