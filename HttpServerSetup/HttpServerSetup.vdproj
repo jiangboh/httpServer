@@ -273,6 +273,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_8CF21FB4EBF2420D9F02ABD4390A359A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_8E114D4A5A18E232AFE2A9C244458F7C"
         "OwnerKey" = "8:_1E23D2AA3F7B46BAA30412F74670C2C8"
         "MsmSig" = "8:_UNDEFINED"
@@ -1954,6 +1960,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8CF21FB4EBF2420D9F02ABD4390A359A"
+            {
+            "SourcePath" = "8:..\\httpServer\\bin\\Debug\\Server.ico"
+            "TargetName" = "8:Server.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_2ABA263368804069B599EE3F96937118"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8E114D4A5A18E232AFE2A9C244458F7C"
             {
             "AssemblyRegister" = "3:1"
@@ -2704,7 +2730,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HttpServerSetup"
         "ProductCode" = "8:{FC964DB7-489D-40F9-911B-7C01268BE320}"
-        "PackageCode" = "8:{A4820E24-3187-4012-ACE4-7503E81B6B5D}"
+        "PackageCode" = "8:{C41636C2-B9C1-4BD0-8E09-95FE89787F02}"
         "UpgradeCode" = "8:{BE6B1944-F0A0-4E54-9342-BDD31B97A9AD}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2835,7 +2861,7 @@
             "Target" = "8:_1E23D2AA3F7B46BAA30412F74670C2C8"
             "Folder" = "8:_9C41DA35552A4AD2B3A8129DFA09289D"
             "WorkingFolder" = "8:_2ABA263368804069B599EE3F96937118"
-            "Icon" = "8:"
+            "Icon" = "8:_8CF21FB4EBF2420D9F02ABD4390A359A"
             "Feature" = "8:"
             }
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_7F79D2B80FC04C658954090E609CB8AF"
@@ -2849,7 +2875,21 @@
             "Target" = "8:_1E23D2AA3F7B46BAA30412F74670C2C8"
             "Folder" = "8:_B49CC16432BC423580C5F88A0755295B"
             "WorkingFolder" = "8:_2ABA263368804069B599EE3F96937118"
-            "Icon" = "8:"
+            "Icon" = "8:_8CF21FB4EBF2420D9F02ABD4390A359A"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_C2C3C1AFEFB949E7BD63659E0B4B7EAF"
+            {
+            "Name" = "8:httpServer"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:0"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_1E23D2AA3F7B46BAA30412F74670C2C8"
+            "Folder" = "8:_2ABA263368804069B599EE3F96937118"
+            "WorkingFolder" = "8:_2ABA263368804069B599EE3F96937118"
+            "Icon" = "8:_8CF21FB4EBF2420D9F02ABD4390A359A"
             "Feature" = "8:"
             }
         }
@@ -3253,7 +3293,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E23D2AA3F7B46BAA30412F74670C2C8"
             {
-            "SourcePath" = "8:..\\httpServer\\obj\\Debug\\httpServer.exe"
+            "SourcePath" = "8:..\\httpServer\\obj\\Release\\httpServer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2ABA263368804069B599EE3F96937118"

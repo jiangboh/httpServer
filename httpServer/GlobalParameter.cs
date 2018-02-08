@@ -47,6 +47,8 @@ namespace httpServer
 
         //static public MySqlDbHelper myDB11 = new MySqlDbHelper();
 
+        static public string logRootDirectory = Application.StartupPath + @"\Log";
+
         /// <summary>
         /// 网管连接字符串
         /// </summary>
@@ -120,6 +122,8 @@ namespace httpServer
         {
             Log.SetLogLevel(ConfigurationManager.AppSettings["LogLevel"].ToString());
             Log.MaxLogFileSize = int.Parse(ConfigurationManager.AppSettings["MaxLogFileSize"].ToString());
+            logRootDirectory = ConfigurationManager.AppSettings["LogFolder"].ToString();
+            Log.LogFolder = logRootDirectory; 
 
             Log.WriteInfo("\n\n\n", false);
             Log.WriteInfo("获取配置参数...");
@@ -146,9 +150,14 @@ namespace httpServer
 
         }
 
+        /// <summary>
+        /// 开始运行主应用程序
+        /// </summary>
         static public void StartThisApp()
         {
             GlobalParameter.SetGlobalParameter();
+            Logger.setLogRootDirectory(GlobalParameter.logRootDirectory);
+
             if (GlobalParameter.httpServerRun)
             {
                 mainFunction = new MainFunction();
@@ -166,19 +175,19 @@ namespace httpServer
         /// </summary>
         static public void CloseThisApp(bool isShow)
         {
-            httpServerRun = false;
-            Application.Exit();
             if (isShow)
             {
                 MessageBox.Show("HttpServer程序异常退出！", "错误：");
             }
+            GlobalParameter.httpServerRun = false;
             mainFunction.StopMainFunctionThread();
             httpHandle.StopHttpServerThread();
+            Application.Exit();
         }
 
         static public void CloseThisApp()
         {
-            CloseThisApp(false);
+            CloseThisApp(true);
         }
     }
 }

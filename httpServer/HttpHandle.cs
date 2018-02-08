@@ -17,7 +17,7 @@ namespace httpServer
         //static public List<SnIpPortNode> snList;
         static private int AlarmMaxNum = 32;
         static private string PeriodicGetValue = "GetParameterValue_Periodic";
-        private Thread myThread = null;
+        //private Thread myThread = null;
         private HttpListener httpListenner = null;
 
         /// <summary>
@@ -53,13 +53,12 @@ namespace httpServer
                 Log.WriteError("postUrl2Ap:" + ex.Message);
             }
         }
-
+        
         /// <summary>
         /// 创建http Server线程
         /// </summary>
         public void RunHttpServerThread()
         {
-            
             httpListenner = new HttpListener();
             httpListenner.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             //httpListenner.AuthenticationSchemes = AuthenticationSchemes.Basic;
@@ -68,82 +67,83 @@ namespace httpServer
             {
                 httpListenner.Start();
                 Log.WriteDebug("Http Server 启动成功!");
+
+                httpListenner.BeginGetContext(new AsyncCallback(Context), httpListenner);
+                Log.WriteDebug("开始循环接收Http消息...");
             }
             catch (Exception ex)
             {
                 Log.WriteCrash(ex);
-                GlobalParameter.httpServerRun = false;
+                GlobalParameter.CloseThisApp();
             }
 
             //snList = new List<SnIpPortNode>();
-
-            myThread = new Thread(new ThreadStart(delegate {
-                try
-                {
-                    loop(httpListenner);
-                }
-                catch (Exception ex)
-                {
-                    Log.WriteCrash(ex);
-                    GlobalParameter.httpServerRun = false;
-                }
-            }));
-            myThread.IsBackground = true;
-            myThread.Start();
         }
 
         public void StopHttpServerThread()
         {
             httpListenner.Stop();
-            if (myThread != null)
-            {
-                myThread.Abort();//终止线程myThread
-                //myThread.Join();//等待线程myThread结束
-                myThread = null;
-            }
+            httpListenner.Close();
         }
+
+        static void Context(IAsyncResult result)
+        {
+            if (!GlobalParameter.httpServerRun) return;
+
+            HttpListener listenner = (HttpListener)result.AsyncState;
+            try
+            {
+                HttpListenerContext context = listenner.EndGetContext(result);
+
+                Thread myThread = new Thread(new ThreadStart(delegate
+                {
+                    HandleMsg(context);
+                }));
+                myThread.IsBackground = true;
+                myThread.Start();
+                Thread.Sleep(100);//休眠时间
+            }
+            catch
+            {
+                Log.WriteError("Http Server 处理消息出错!");
+            }
+            listenner.BeginGetContext(new AsyncCallback(Context), listenner);
+        }
+
 
         /// <summary>
         /// 循环接收处理http消息
         /// </summary>
         /// <param name="httpListenner">http消息参数</param>
-        private void loop(HttpListener httpListenner)
+        static private void HandleMsg(HttpListenerContext context)
         {
-            Log.WriteDebug("开始循环接收Http消息...");
-            while (GlobalParameter.httpServerRun)
+            if (!GlobalParameter.httpServerRun) return;
+
+            try
             {
-                try
+                //HttpListenerContext context =httpListenner.GetContext();
+                HttpListenerRequest request = context.Request;
+                HttpListenerResponse response = context.Response;
+
+                Servlet servlet = new MyServlet();
+                servlet.onCreate();
+
+                if (request.HttpMethod == "POST")
                 {
-                    HttpListenerContext context =httpListenner.GetContext();
-                    HttpListenerRequest request = context.Request;
-                    HttpListenerResponse response = context.Response;
-
-                    Servlet servlet = new MyServlet();
-                    servlet.onCreate();
-
-                    if (!GlobalParameter.httpServerRun) break;
-
-                    if (request.HttpMethod == "POST")
-                    {
-                        servlet.onPost(request, response);
-                        response.Close();
-                    }
-                    else if (request.HttpMethod == "GET")
-                    {
-                        servlet.onGet(request, response);
-                        response.Close();
-                    }
-                    Thread.Sleep(100);//休眠时间
+                    servlet.onPost(request, response);
+                    response.Close();
                 }
-                catch
+                else if (request.HttpMethod == "GET")
                 {
-                    Log.WriteError("Http Server 处理消息出错!");
-                    continue;
+                    servlet.onGet(request, response);
+                    response.Close();
                 }
+                Thread.Sleep(100);//休眠时间
             }
-            httpListenner.Stop();
-            Log.WriteError("已关闭Http Server!");
-            GlobalParameter.CloseThisApp();
+            catch
+            {
+                Log.WriteError("Http Server 处理消息出错!");
+            }
         }
 
         #region 定义http消息处理类
@@ -483,13 +483,15 @@ namespace httpServer
 
                 if (isChange)
                 {
-                    Log.WriteDebug("更新AP状态或参数修改!!");
+                    string str = string.Format("更新AP({0})状态或参数!!!",sn);
+                    Log.WriteDebug(str);
                     
                     int errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
                     if (0 != errCode)
                     {
-                        Log.WriteError("更新AP状态或参数修改出错。出错码：" + errCode);
+                        Log.WriteError(str + "出错。出错码：" + errCode);
                     }
+                    Log.WriteDebug(str + "成功！！！");
                 }
 
             }
@@ -641,15 +643,21 @@ namespace httpServer
                             {
                                 if (String.Compare(parameterStruct.Method, RPCMethod.GetParameterValuesResponse, true) == 0)
                                 {
-                                    string str = String.Format("修改SN({0}),任务ID({1}),任务状态({2})！",
-                                                connInfo.Sn, parameterStruct.ID, TaskStatus.ReponseOk);
-                                    Log.WriteDebug(str);
-                                    if (!myDB.SetStatusBySnId(parameterStruct.ID, connInfo.Sn,
-                                       TaskStatus.ReponseOk))
+                                    //去掉周期性查询
+                                    if (String.Compare(parameterStruct.ID, PeriodicGetValue, true) != 0)
                                     {
-                                        Log.WriteError(str);
+                                        string str = String.Format("修改SN({0}),任务ID({1}),任务状态({2})！",
+                                                connInfo.Sn, parameterStruct.ID, TaskStatus.ReponseOk);
+                                        Log.WriteDebug(str);
+                                        if (!myDB.SetStatusBySnId(parameterStruct.ID, connInfo.Sn,
+                                           TaskStatus.ReponseOk))
+                                        {
+                                            Log.WriteError(str);
+                                        }
                                     }
+                                    Log.WriteDebug("更改数据库中AP的状态或参数值...");
                                     CheckParameterList(connInfo.Sn, parameterStruct.parameterNode);
+
                                     SaveParameterList(connInfo.Sn, parameterStruct.ID, parameterStruct.parameterNode);
                                 }
                                 else if (String.Compare(parameterStruct.Method, RPCMethod.SetParameterValuesResponse, true) == 0)

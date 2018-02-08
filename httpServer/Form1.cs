@@ -19,8 +19,6 @@ using System.Xml;
 
 namespace httpServer
 {
-
-
     public partial class Form1 : Form
     {
         //MySqlDbHelper myDB = new MySqlDbHelper();
@@ -34,13 +32,84 @@ namespace httpServer
         {
             textBox1.Text = "";
             notifyIcon.Text = this.Text;
-            //label1.Parent = pictureBox1;
+
             //运行主程序
             GlobalParameter.StartThisApp();
         }
 
+        /// <summary>
+        /// 点击“退出”时的动作
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void label1_Click(object sender, EventArgs e)
+        {
+            if (DialogResult.OK == MessageBox.Show("确认关闭服务器程序?","关闭："
+                , MessageBoxButtons.OKCancel,MessageBoxIcon.Question))
+            {
+                Log.WriteError("点击退出按钮，关闭程序！");
+                GlobalParameter.CloseThisApp(false);
+            }
+        }
+
+        /// <summary>
+        /// 点击关闭窗口时，最小化到系统托盘
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (GlobalParameter.httpServerRun)
+            {
+                // 取消关闭窗体
+                e.Cancel = true;
+
+                // 将窗体变为最小化
+                this.WindowState = FormWindowState.Minimized;
+
+                this.ShowInTaskbar = false; //不显示在系统任务栏 
+                notifyIcon.Visible = true; //托盘图标可见 
+            }
+        }
+
+        /// <summary>
+        /// 点击托盘上的按扭，显示界面
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                this.Show();
+                this.WindowState = FormWindowState.Normal;
+                this.ShowInTaskbar = true;
+            }
+        }
+
+        /// <summary>
+        /// 鼠标移到“退出”上时弹出提示信息
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void label1_MouseEnter(object sender, EventArgs e)
+        {
+            //lable1toolTip.IsBalloon = true;
+            lable1toolTip.SetToolTip(label1, "点我关闭服务器");
+        }
+
+        /// <summary>
+        /// 定时任务，闪烁显示“运行中”
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            label2.Visible = !(label2.Visible);
+        }
 
 
+        #region 测试按钮
         private void button2_Click(object sender, EventArgs e)
         {
             //模拟获取参数值
@@ -74,59 +143,14 @@ namespace httpServer
 
         private void button6_Click(object sender, EventArgs e)
         {
-     
+
             textBox1.Text = "";
             DateTime dt = DateTime.Now;
 
             new MainFunction().get_tmpvalue_table();
 
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            if (DialogResult.OK == MessageBox.Show("确认关闭服务程序?","关闭："
-                , MessageBoxButtons.OKCancel,MessageBoxIcon.Question))
-            {
-                GlobalParameter.httpServerRun = false;
-                Thread.Sleep(10);//休眠时间
-                Log.WriteError("点击退出按钮，关闭程序！");
-                GlobalParameter.CloseThisApp(false);
-            }
-        }
-
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            // 取消关闭窗体
-            e.Cancel = true;
-
-            // 将窗体变为最小化
-            this.WindowState = FormWindowState.Minimized;
-
-            this.ShowInTaskbar = false; //不显示在系统任务栏 
-            notifyIcon.Visible = true; //托盘图标可见 
-
-        }
-
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Minimized)
-            {
-                this.Show();
-                this.WindowState = FormWindowState.Normal;
-                this.ShowInTaskbar = true;
-            }
-        }
-
-        private void label1_MouseEnter(object sender, EventArgs e)
-        {
-            lable1toolTip.IsBalloon = true;
-            lable1toolTip.SetToolTip(label1, "点我关闭服务程序");
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            label2.Visible = !(label2.Visible);
-        }
+        #endregion
     }
 
 }

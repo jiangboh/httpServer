@@ -26,6 +26,7 @@ namespace httpServer
         /// </summary>
         static public int MaxLogFileSize = 1000000; //1M
 
+        static public string LogFolder = "d:\\httpserver\\log";
         /// <summary>
         /// Log 打印级别
         /// </summary>
@@ -63,11 +64,11 @@ namespace httpServer
 
         public static void WriteCrash(Exception ex)
         {
-            string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
-            string filePath = log_folder + "\\Crash.log";
-            if (!System.IO.Directory.Exists(log_folder))
+            //string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
+            string filePath = LogFolder + "\\Crash.log";
+            if (!System.IO.Directory.Exists(LogFolder))
             {
-                System.IO.Directory.CreateDirectory(log_folder);
+                System.IO.Directory.CreateDirectory(LogFolder);
             }
             if (!System.IO.File.Exists(filePath))
             {
@@ -87,13 +88,13 @@ namespace httpServer
 
         private static void Write(String msg,bool addTimestamp)
         {
-            string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
-            string filePath = log_folder + "\\Run.log";
+            //string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
+            string filePath = LogFolder + "\\Run.log";
             lock (locker1)
             {
-                if (!System.IO.Directory.Exists(log_folder))
+                if (!System.IO.Directory.Exists(LogFolder))
                 {
-                    System.IO.Directory.CreateDirectory(log_folder);
+                    System.IO.Directory.CreateDirectory(LogFolder);
                 }
                 if (!System.IO.File.Exists(filePath))
                 {
@@ -112,7 +113,7 @@ namespace httpServer
                 if (fileInfo.Length > MaxLogFileSize)
                 {
                     string zipfilePath = string.Format("{0}\\Log_{1:yyyyMMddHHmmss}-{2:yyyyMMddHHmmss}.zip",
-                        log_folder, fileInfo.CreationTime, DateTime.Now);
+                        LogFolder, fileInfo.CreationTime, DateTime.Now);
                     ZipHelper.ZipFile(filePath, zipfilePath, null);
 
                     File.Delete(filePath);
