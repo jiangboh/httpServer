@@ -15,6 +15,8 @@ namespace httpServer
     class HttpHandle
     {
         //static public List<SnIpPortNode> snList;
+        static private MySqlDbHelper httpserverDB;// = new MySqlDbHelper();
+
         static private int AlarmMaxNum = 32;
         static private string PeriodicGetValue = "GetParameterValue_Periodic";
         //private Thread myThread = null;
@@ -59,6 +61,13 @@ namespace httpServer
         /// </summary>
         public void RunHttpServerThread()
         {
+            httpserverDB = new MySqlDbHelper(GlobalParameter.DB_ConnStr);
+            if (!httpserverDB.MyDbConnFlag)
+            {
+                Log.WriteError("打开数据库失败！" + GlobalParameter.DB_ConnStr);
+                GlobalParameter.CloseThisApp();
+            }
+
             httpListenner = new HttpListener();
             httpListenner.AuthenticationSchemes = AuthenticationSchemes.Anonymous;
             //httpListenner.AuthenticationSchemes = AuthenticationSchemes.Basic;
@@ -125,7 +134,7 @@ namespace httpServer
                 HttpListenerRequest request = context.Request;
                 HttpListenerResponse response = context.Response;
 
-                Servlet servlet = new MyServlet();
+                Servlet servlet = new MyServlet(httpserverDB);
                 servlet.onCreate();
 
                 if (request.HttpMethod == "POST")
@@ -159,14 +168,15 @@ namespace httpServer
         {
             private MySqlDbHelper myDB;// = new MySqlDbHelper();
 
-            public MyServlet()
+            public MyServlet(MySqlDbHelper db)
             {
-                this.myDB = new MySqlDbHelper(GlobalParameter.DB_ConnStr);
-                if (!myDB.MyDbConnFlag)
-                {
-                    Log.WriteError("打开数据库失败！" + GlobalParameter.DB_ConnStr);
-                    GlobalParameter.httpServerRun = false;
-                }
+                //this.myDB = new MySqlDbHelper(GlobalParameter.DB_ConnStr);
+                //if (!myDB.MyDbConnFlag)
+                //{
+                //    Log.WriteError("打开数据库失败！" + GlobalParameter.DB_ConnStr);
+                //    GlobalParameter.httpServerRun = false;
+                //}
+                this.myDB = db;
             }
 
             public override void onCreate()
@@ -485,13 +495,22 @@ namespace httpServer
                 {
                     string str = string.Format("更新AP({0})状态或参数!!!",sn);
                     Log.WriteDebug(str);
-                    
-                    int errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
+
+                    int errCode = 0;
+                    try
+                    {
+                        errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
+                    }
+                    catch (Exception e)
+                    {
+                        Log.WriteError("执行数据库函数（deviceinfo_record_update）出错。出错原因："
+                            + e.Message.ToString());
+                        errCode = -1;
+                    }
                     if (0 != errCode)
                     {
                         Log.WriteError(str + "出错。出错码：" + errCode);
                     }
-                    Log.WriteDebug(str + "成功！！！");
                 }
 
             }
@@ -752,7 +771,7 @@ namespace httpServer
                 }
                 catch(Exception e)
                 {
-                    Log.WriteError("处理收到的消息(" + ip + ":" + port + ")处错。");
+                    Log.WriteError("处理收到的消息(" + ip + ":" + port + ")出错。");
                     Log.WriteError("出错原因：" + e.Message.ToString());
                 }
             }

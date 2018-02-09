@@ -22,7 +22,9 @@ namespace httpServer
     public partial class Form1 : Form
     {
         //MySqlDbHelper myDB = new MySqlDbHelper();
-  
+        private string FormTitle = "博威通小网管服务器";
+        private int ShowLen = 0;
+
         public Form1()
         {
             InitializeComponent();
@@ -32,7 +34,7 @@ namespace httpServer
         {
             textBox1.Text = "";
             notifyIcon.Text = this.Text;
-
+            this.Text = FormTitle;
             //运行主程序
             GlobalParameter.StartThisApp();
         }
@@ -106,6 +108,10 @@ namespace httpServer
         private void timer1_Tick(object sender, EventArgs e)
         {
             label2.Visible = !(label2.Visible);
+
+            ShowLen++;
+            if (ShowLen > FormTitle.Length) ShowLen = 0;
+            this.Text = FormTitle.Substring(0, ShowLen);
         }
 
 

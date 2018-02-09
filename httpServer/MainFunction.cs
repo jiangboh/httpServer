@@ -350,9 +350,17 @@ namespace httpServer
             {
                 return "";
             }
-            String[] nameList = new string[2];
-            nameList[0] = "DeviceInfo.AdditionalSoftwareVersion11";
-            nameList[1] = "Services.FAPService.1.CellConfig.LTE.RAN.Common.CellIdentity";
+            String[] nameList = new string[9];
+            nameList[0] = "Services.FAPService.1.Transport.SCTP.Assoc.1.PrimaryPeerAddress";
+            nameList[1] = "Services.FAPService.1.Transport.SCTP.Assoc.8.PrimaryPeerAddress";
+            nameList[2] = "Services.FAPService.1.FAPControl.LTE.Gateway.AGServerIp1";
+            nameList[3] = "Services.FAPService.1.FAPControl.LTE.Gateway.AGPort1";
+            nameList[4] = "Services.FAPService.1.FAPControl.LTE.Gateway.SecGWServer1";
+            nameList[5] = "Services.FAPService.1.FAPControl.LTE.Gateway.SecGWServer2";
+            nameList[6] = "Services.FAPService.1.FAPControl.LTE.Gateway.SecGWServer3";
+            nameList[7] = "Time.NTPServer1";
+            nameList[8] = "Time.NTPServer2";
+            
             byte[] xmlStr = XmlHandle.CreateGetParameterValuesXmlFile(Id, nameList);
 
             String[] snList = new String[3];
@@ -373,10 +381,15 @@ namespace httpServer
                 return "";
             }
             List<XmlParameter> parameterList = new List<XmlParameter>();
-            XmlParameter xmlParameter1 = new XmlParameter("FAP.PerfMgmt.Config.1.Enable", "1");
+            XmlParameter xmlParameter1 = new XmlParameter("Services.FAPService.1.FAPControl.LTE.Gateway.AGPort1", "123");
             parameterList.Add(xmlParameter1);
-            XmlParameter xmlParameter2 = new XmlParameter("FAP.PerfMgmt.Config.1.URL", GlobalParameter.UploadServerUrl);
+            XmlParameter xmlParameter2 = new XmlParameter("Services.FAPService.1.FAPControl.LTE.Gateway.AGServerIp1", "10.0.0.2");
             parameterList.Add(xmlParameter2);
+            XmlParameter xmlParameter3 = new XmlParameter("Time.NTPServer1", "1.1.1.1");
+            parameterList.Add(xmlParameter3);
+            XmlParameter xmlParameter4 = new XmlParameter("Time.NTPServer2", "2.2.2.2");
+            parameterList.Add(xmlParameter4);
+
             byte[] xmlStr = XmlHandle.CreateSetParameterValuesXmlFile(Id, parameterList);
             if (xmlStr.Length <= 0)
             {
