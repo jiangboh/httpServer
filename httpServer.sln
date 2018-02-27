@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetworkManagement", "httpServer\NetworkManagement.csproj", "{437816F6-8592-456E-A4E9-9F9C0CA34FCB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpServer", "httpServer\httpServer.csproj", "{437816F6-8592-456E-A4E9-9F9C0CA34FCB}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HttpServerSetup", "HttpServerSetup\HttpServerSetup.vdproj", "{7EF992DE-F386-42C5-A538-DF7E4AB924B5}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "httpServerSetup", "HttpServerSetup\HttpServerSetup.vdproj", "{7EF992DE-F386-42C5-A538-DF7E4AB924B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
