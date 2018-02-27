@@ -3,7 +3,7 @@
 "VSVersion" = "3:800"
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
-"ProjectName" = "8:HttpServerSetup"
+"ProjectName" = "8:MNMSetup"
 "LanguageId" = "3:2052"
 "CodePage" = "3:936"
 "UILanguageId" = "3:2052"
@@ -436,7 +436,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_62BA56B90C8AC6BDB0F4E2CE1ECE8CEC"
+        "OwnerKey" = "8:_1FB6FBA19A1B8808F808EBACBE169B07"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A1911F76EF78070DB4C2B9CA6EB9625F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -449,18 +455,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F6E029387FD43AB3C1EB6C2728482983"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A1911F76EF78070DB4C2B9CA6EB9625F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1FB6FBA19A1B8808F808EBACBE169B07"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -781,6 +775,12 @@
         "OwnerKey" = "8:_94931A231EE73B1FE1EE344ED721C45C"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_62BA56B90C8AC6BDB0F4E2CE1ECE8CEC"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -799,6 +799,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -815,6 +823,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
     }
     "Deployable"
@@ -3293,7 +3309,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1E23D2AA3F7B46BAA30412F74670C2C8"
             {
-            "SourcePath" = "8:..\\httpServer\\obj\\Release\\httpServer.exe"
+            "SourcePath" = "8:..\\httpServer\\obj\\Debug\\mnm.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2ABA263368804069B599EE3F96937118"

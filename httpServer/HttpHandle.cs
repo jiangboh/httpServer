@@ -267,6 +267,7 @@ namespace httpServer
                     {
                         TaskType taskType = TaskType.TaskNull;
                         string taskId = "";
+                        Log.WriteDebug("获取SN(" + connInfo.Sn + ")的任务。");
                         xml = myDB.GetTaskBySN(ref taskType, ref taskId, connInfo.Sn);
                         if ((xml != null) && (taskType != TaskType.TaskNull) && (false == string.IsNullOrEmpty(taskId)))
                         {
@@ -573,6 +574,7 @@ namespace httpServer
                 Log.WriteDebug("收到POST消息:IP=" + ip +";Port=" + port);
                 try
                 {
+                    //空消息
                     if (!request.HasEntityBody)
                     {
                         Log.WriteDebug("收到POST消息，消息内容为空!");

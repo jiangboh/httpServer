@@ -7,7 +7,7 @@
     <ProjectGuid>{437816F6-8592-456E-A4E9-9F9C0CA34FCB}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>httpServer</RootNamespace>
-    <AssemblyName>httpServer</AssemblyName>
+    <AssemblyName>HttpServer</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -50,6 +50,9 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Server.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>httpServer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ICSharpCode.SharpZipLib">

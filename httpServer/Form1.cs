@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Sockets;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -22,8 +24,8 @@ namespace httpServer
     public partial class Form1 : Form
     {
         //MySqlDbHelper myDB = new MySqlDbHelper();
-        private string FormTitle = "博威通小网管服务器";
-        private int ShowLen = 0;
+        //public string FormTitle = "博威通小网管服务器";
+        //private int ShowLen = 0;
 
         public Form1()
         {
@@ -34,7 +36,7 @@ namespace httpServer
         {
             textBox1.Text = "";
             notifyIcon.Text = this.Text;
-            this.Text = FormTitle;
+            this.Text = Program.FormTitle;
             //运行主程序
             GlobalParameter.StartThisApp();
         }
@@ -109,9 +111,9 @@ namespace httpServer
         {
             label2.Visible = !(label2.Visible);
 
-            ShowLen++;
-            if (ShowLen > FormTitle.Length) ShowLen = 0;
-            this.Text = FormTitle.Substring(0, ShowLen);
+            //ShowLen++;
+            //if (ShowLen > FormTitle.Length) ShowLen = 0;
+            //this.Text = FormTitle.Substring(0, ShowLen);
         }
 
 
@@ -157,6 +159,9 @@ namespace httpServer
 
         }
         #endregion
+
+ 
+        
     }
 
 }
