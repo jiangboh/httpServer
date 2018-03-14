@@ -175,7 +175,7 @@ namespace httpServer
                 foreach (ApConnHmsInfo x in connList)
                 {
                     TimeSpan timeSpan = tNow - x.Time;
-                    //如果前次上线时间距当前时间大于4分钟，表示Ap已下线。
+                    //如果前次上线时间距当前时间大于70秒，表示Ap已下线。
                     double diff = timeSpan.TotalMinutes;
                     if (diff >= GlobalParameter.ApOffLineTime)
                     {

@@ -104,9 +104,9 @@ namespace httpServer
         static public String ConnectionRequestPassWd = "test";
 
         /// <summary>
-        /// AP心跳超时时间，（单位：分钟）
+        /// AP心跳超时时间，（单位：秒）
         /// </summary>
-        static public int ApOffLineTime = 4;   //
+        static public int ApOffLineTime = 70;   //
 
         /// <summary>
         /// XML文件的根节点（"Device."或者"InternetGatewayDevice."）
@@ -156,7 +156,7 @@ namespace httpServer
         static public void StartThisApp()
         {
             GlobalParameter.SetGlobalParameter();
-            Logger.setLogRootDirectory(GlobalParameter.logRootDirectory);
+            Logger.LogRootDirectory = GlobalParameter.logRootDirectory;
 
             if (GlobalParameter.httpServerRun)
             {

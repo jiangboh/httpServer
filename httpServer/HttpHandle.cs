@@ -462,6 +462,11 @@ namespace httpServer
                         deviceInfo.curVersion = x.value;
                         isChange = true;
                     }
+                    else if (String.Compare(x.name, "DeviceInfo.HardwareVersion", true) == 0)
+                    {
+                        deviceInfo.type = x.value;
+                        isChange = true;
+                    }
                     else if (String.Compare(x.name, "Services.FAPService.1.CellConfig.LTE.RAN.Common.CellIdentity", true) == 0)
                     {
                         deviceInfo.cellId = x.value;

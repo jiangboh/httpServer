@@ -650,7 +650,7 @@ namespace httpServer
             //parameterList.Add(xmlParameter5);
             XmlParameter xmlParameter6 = new XmlParameter("ManagementServer.PeriodicInformEnable", "1");
             parameterList.Add(xmlParameter6);
-            XmlParameter xmlParameter7 = new XmlParameter("ManagementServer.PeriodicInformInterval", "180");
+            XmlParameter xmlParameter7 = new XmlParameter("ManagementServer.PeriodicInformInterval", "60");
             parameterList.Add(xmlParameter7);
             XmlParameter xmlParameter8 = new XmlParameter("ManagementServer.ConnectionRequestUsername", GlobalParameter.ConnectionRequestUsername);
             parameterList.Add(xmlParameter8);
