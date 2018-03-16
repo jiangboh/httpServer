@@ -42,8 +42,8 @@ namespace httpServer
         /// </summary>
         static public ApConnHmsList apConnHmsList = new ApConnHmsList();
 
-        static private MainFunction mainFunction;
-        static private HttpHandle httpHandle;
+        static private MainFunction mainFunction=null;
+        static private HttpHandle httpHandle=null;
 
         //static public MySqlDbHelper myDB11 = new MySqlDbHelper();
 
@@ -106,7 +106,7 @@ namespace httpServer
         /// <summary>
         /// AP心跳超时时间，（单位：秒）
         /// </summary>
-        static public int ApOffLineTime = 70;   //
+        static public int ApHeartbeatTime = 60;   //
 
         /// <summary>
         /// XML文件的根节点（"Device."或者"InternetGatewayDevice."）
@@ -146,7 +146,7 @@ namespace httpServer
 
             XmlRootNode = ConfigurationManager.AppSettings["XmlRootNode"].ToString();
 
-            ApOffLineTime = int.Parse(ConfigurationManager.AppSettings["ApOffLineTime"].ToString());
+            ApHeartbeatTime = int.Parse(ConfigurationManager.AppSettings["ApOffLineTime"].ToString());
 
         }
 
@@ -180,8 +180,10 @@ namespace httpServer
                 MessageBox.Show("HttpServer程序异常退出！", "错误：");
             }
             GlobalParameter.httpServerRun = false;
-            mainFunction.StopMainFunctionThread();
-            httpHandle.StopHttpServerThread();
+            if (mainFunction != null)
+                mainFunction.StopMainFunctionThread();
+            if (httpHandle != null)
+                httpHandle.StopHttpServerThread();
             Application.Exit();
         }
 

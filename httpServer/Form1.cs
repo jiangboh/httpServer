@@ -139,8 +139,11 @@ namespace httpServer
 
         private void button4_Click(object sender, EventArgs e)
         {
-            textBox1.Text = "";
-            textBox1.Text = new MainFunction().AddTaskTest_GetLog();
+            //textBox1.Text = "";
+            //textBox1.Text = new MainFunction().AddTaskTest_GetLog();
+            MessageBox.Show("11111111111111111");
+            Logger.LogRootDirectory = "d:\\httpserver\\log";
+            Logger.Trace(Logger.__INFO__, "province:---------------------");
         }
 
         private void button5_Click(object sender, EventArgs e)

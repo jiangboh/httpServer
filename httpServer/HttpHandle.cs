@@ -505,18 +505,26 @@ namespace httpServer
                     int errCode = 0;
                     try
                     {
+                        Log.WriteDebug("curVersion:(" + deviceInfo.curVersion + ")");
+                        Log.WriteDebug("type:(" + deviceInfo.type + ")");
+                        Log.WriteDebug("cellId:(" + deviceInfo.cellId + ")");
+                        Log.WriteDebug("pci:(" + deviceInfo.pci + ")");
+                        Log.WriteDebug("earfcn:(" + deviceInfo.earfcn + ")");
+                        Log.WriteDebug("tac:(" + deviceInfo.tac + ")");
+                        Log.WriteDebug("s1Status:(" + deviceInfo.s1Status + ")");
+
                         errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
+                        if (0 != errCode)
+                        {
+                            Log.WriteError(str + "出错。出错码：" + errCode);
+                        }
                     }
                     catch (Exception e)
                     {
                         Log.WriteError("执行数据库函数（deviceinfo_record_update）出错。出错原因："
                             + e.Message.ToString());
                         errCode = -1;
-                    }
-                    if (0 != errCode)
-                    {
-                        Log.WriteError(str + "出错。出错码：" + errCode);
-                    }
+                    }  
                 }
 
             }
