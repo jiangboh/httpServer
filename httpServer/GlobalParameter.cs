@@ -123,31 +123,136 @@ namespace httpServer
             Log.SetLogLevel(ConfigurationManager.AppSettings["LogLevel"].ToString());
             Log.MaxLogFileSize = int.Parse(ConfigurationManager.AppSettings["MaxLogFileSize"].ToString());
             logRootDirectory = ConfigurationManager.AppSettings["LogFolder"].ToString();
-            Log.LogFolder = logRootDirectory; 
+            Log.LogFolder = logRootDirectory;
 
             Log.WriteInfo("\n\n\n", false);
             Log.WriteInfo("获取配置参数...");
-            DB_ConnStr = ConfigurationManager.ConnectionStrings["dbConStr"].ToString();
+            try
+            { 
+                DB_ConnStr = ConfigurationManager.ConnectionStrings["dbConStr"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取数据库连接配置出错。退出程序！" + e.Message);
+                CloseThisApp();
+                return;
+            }
+            try
+            {
+                ThisIp = ConfigurationManager.AppSettings["ThisIp"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(ThisIp)出错！" + e.Message);
+            }
 
-            ThisIp = ConfigurationManager.AppSettings["HttpServerIp"].ToString();
-            HttpServerName = ConfigurationManager.AppSettings["HttpServerName"].ToString();
-            HttpServerPasswd = ConfigurationManager.AppSettings["HttpServerPasswd"].ToString();
+            try
+            {
+                HttpServerName = ConfigurationManager.AppSettings["HttpServerName"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(HttpServerName)出错！" + e.Message);
+            }
+           
+            try
+            {
+                HttpServerPasswd = ConfigurationManager.AppSettings["HttpServerPasswd"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(HttpServerPasswd)出错！" + e.Message);
+            }
 
-            Ntp1ServerPath = ConfigurationManager.AppSettings["Ntp1ServerPath"].ToString();
-            Ntp2ServerPath = ConfigurationManager.AppSettings["Ntp2ServerPath"].ToString();
+            try
+            {
+                Ntp1ServerPath = ConfigurationManager.AppSettings["Ntp1ServerPath"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(Ntp1ServerPath)出错！" + e.Message);
+            }
+  
+            try
+            {
+                Ntp2ServerPath = ConfigurationManager.AppSettings["Ntp2ServerPath"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(Ntp2ServerPath)出错！" + e.Message);
+            }
 
-            ConnectionRequestUsername = ConfigurationManager.AppSettings["ConnectionRequestUsername"].ToString();
-            ConnectionRequestPassWd = ConfigurationManager.AppSettings["ConnectionRequestPassWd"].ToString();
+            try
+            {
+                ConnectionRequestUsername = ConfigurationManager.AppSettings["ConnectionRequestUsername"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(ConnectionRequestUsername)出错！" + e.Message);
+            }
 
-            UploadServerRootPath = ConfigurationManager.AppSettings["UploadServerRootPath"].ToString();
-            UploadServerUrl = ConfigurationManager.AppSettings["UploadServerUrl"].ToString();
-            UploadServerUser = ConfigurationManager.AppSettings["UploadServerUser"].ToString();
-            UploadServerPasswd = ConfigurationManager.AppSettings["UploadServerPasswd"].ToString();
+            try
+            {
+                ConnectionRequestPassWd = ConfigurationManager.AppSettings["ConnectionRequestPassWd"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(ConnectionRequestPassWd)出错！" + e.Message);
+            }
 
-            XmlRootNode = ConfigurationManager.AppSettings["XmlRootNode"].ToString();
+            try
+            {
+                UploadServerRootPath = ConfigurationManager.AppSettings["UploadServerRootPath"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(UploadServerRootPath)出错！" + e.Message);
+            }
+           
+            try
+            {
+                UploadServerUrl = ConfigurationManager.AppSettings["UploadServerUrl"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(UploadServerUrl)出错！" + e.Message);
+            }
 
-            ApHeartbeatTime = int.Parse(ConfigurationManager.AppSettings["ApOffLineTime"].ToString());
+            try
+            {
+                UploadServerUser = ConfigurationManager.AppSettings["UploadServerUser"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(UploadServerUser)出错！" + e.Message);
+            }
+   
+            try
+            {
+                UploadServerPasswd = ConfigurationManager.AppSettings["UploadServerPasswd"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(UploadServerPasswd)出错！" + e.Message);
+            }
 
+            try
+            {
+                XmlRootNode = ConfigurationManager.AppSettings["XmlRootNode"].ToString();
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(XmlRootNode)出错！" + e.Message);
+            }
+
+            try
+            {
+                ApHeartbeatTime = int.Parse(ConfigurationManager.AppSettings["ApHeartbeatTime"].ToString());
+            }
+            catch (Exception e)
+            {
+                Log.WriteError("读取参数(ApHeartbeatTime)出错！" + e.Message);
+            }
         }
 
         /// <summary>

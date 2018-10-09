@@ -505,13 +505,13 @@ namespace httpServer
                     int errCode = 0;
                     try
                     {
-                        Log.WriteDebug("curVersion:(" + deviceInfo.curVersion + ")");
-                        Log.WriteDebug("type:(" + deviceInfo.type + ")");
-                        Log.WriteDebug("cellId:(" + deviceInfo.cellId + ")");
-                        Log.WriteDebug("pci:(" + deviceInfo.pci + ")");
-                        Log.WriteDebug("earfcn:(" + deviceInfo.earfcn + ")");
-                        Log.WriteDebug("tac:(" + deviceInfo.tac + ")");
-                        Log.WriteDebug("s1Status:(" + deviceInfo.s1Status + ")");
+                        //Log.WriteDebug("curVersion:(" + deviceInfo.curVersion + ")");
+                        //Log.WriteDebug("type:(" + deviceInfo.type + ")");
+                        //Log.WriteDebug("cellId:(" + deviceInfo.cellId + ")");
+                        //Log.WriteDebug("pci:(" + deviceInfo.pci + ")");
+                        //Log.WriteDebug("earfcn:(" + deviceInfo.earfcn + ")");
+                        //Log.WriteDebug("tac:(" + deviceInfo.tac + ")");
+                        //Log.WriteDebug("s1Status:(" + deviceInfo.s1Status + ")");
 
                         errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
                         if (0 != errCode)
@@ -585,12 +585,21 @@ namespace httpServer
                 int port = request.RemoteEndPoint.Port;
 
                 Log.WriteDebug("收到POST消息:IP=" + ip +";Port=" + port);
+
                 try
                 {
                     //空消息
                     if (!request.HasEntityBody)
                     {
                         Log.WriteDebug("收到POST消息，消息内容为空!");
+                        if (request.Cookies.Count > 0)
+                        {
+                            foreach (Cookie cookie in request.Cookies)
+                            {
+                                response.AppendCookie(cookie);
+                            }
+                        }
+
                         byte[] xml = RecvEmptyMsgHandle(ip, port);
                         if (xml.Length <= 0)
                         {
@@ -615,6 +624,23 @@ namespace httpServer
                         parameterStruct = new XmlHandle().HandleRecvApMsg(reader.ReadToEnd());
 
                         Log.WriteDebug("收到POST消息，消息Method="+ parameterStruct.Method + "!");
+
+                        if (request.Cookies.Count > 0)
+                        {
+                            foreach (Cookie cookie in request.Cookies)
+                            {
+                                response.AppendCookie(cookie);
+                            }
+                        }
+                        else
+                        {
+                            Random rand = new Random(DateTime.Now.Millisecond);
+                            response.AppendCookie(new Cookie("session", string.Format("{0}{1}{2}{3}",
+                                rand.Next().ToString(), rand.Next().ToString(), 
+                                rand.Next().ToString(), rand.Next().ToString())));
+                            response.AppendCookie(new Cookie("sn", parameterStruct.xmlInform.SN));
+                        }
+
                         if (String.Compare(parameterStruct.Method, RPCMethod.Inform, true) == 0)
                         {
                             ApConnHmsInfo connInfo = new ApConnHmsInfo(parameterStruct.xmlInform.SN);

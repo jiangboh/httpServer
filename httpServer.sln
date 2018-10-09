@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpServer", "httpServer\httpServer.csproj", "{437816F6-8592-456E-A4E9-9F9C0CA34FCB}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "httpServerSetup", "HttpServerSetup\HttpServerSetup.vdproj", "{7EF992DE-F386-42C5-A538-DF7E4AB924B5}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{AD7A67C3-4D01-4B99-8AD3-9A146FE78BF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{437816F6-8592-456E-A4E9-9F9C0CA34FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{437816F6-8592-456E-A4E9-9F9C0CA34FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{437816F6-8592-456E-A4E9-9F9C0CA34FCB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7EF992DE-F386-42C5-A538-DF7E4AB924B5}.Debug|Any CPU.ActiveCfg = Debug
-		{7EF992DE-F386-42C5-A538-DF7E4AB924B5}.Release|Any CPU.ActiveCfg = Release
+		{AD7A67C3-4D01-4B99-8AD3-9A146FE78BF4}.Debug|Any CPU.ActiveCfg = Debug
+		{AD7A67C3-4D01-4B99-8AD3-9A146FE78BF4}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

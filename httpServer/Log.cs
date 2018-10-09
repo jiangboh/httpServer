@@ -24,7 +24,7 @@ namespace httpServer
         /// <summary>
         /// Log文件最大字节数，单位(字节)
         /// </summary>
-        static public int MaxLogFileSize = 1000000; //1M
+        static public int MaxLogFileSize = 10000000; //10M
 
         static public string LogFolder = "d:\\httpserver\\log";
         /// <summary>
@@ -65,7 +65,7 @@ namespace httpServer
         public static void WriteCrash(Exception ex)
         {
             //string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
-            string filePath = LogFolder + "\\Crash.log";
+            string filePath = LogFolder + "\\crash.log";
             if (!System.IO.Directory.Exists(LogFolder))
             {
                 System.IO.Directory.CreateDirectory(LogFolder);
@@ -89,12 +89,17 @@ namespace httpServer
         private static void Write(String msg,bool addTimestamp)
         {
             //string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
-            string filePath = LogFolder + "\\Run.log";
+            string filePath = LogFolder + "\\run.log";
+            string bakFilePath = LogFolder + "\\bak";
             lock (locker1)
             {
                 if (!System.IO.Directory.Exists(LogFolder))
                 {
                     System.IO.Directory.CreateDirectory(LogFolder);
+                }
+                if (!System.IO.Directory.Exists(bakFilePath))
+                {
+                    System.IO.Directory.CreateDirectory(bakFilePath);
                 }
                 if (!System.IO.File.Exists(filePath))
                 {
@@ -113,7 +118,7 @@ namespace httpServer
                 if (fileInfo.Length > MaxLogFileSize)
                 {
                     string zipfilePath = string.Format("{0}\\Log_{1:yyyyMMddHHmmss}-{2:yyyyMMddHHmmss}.zip",
-                        LogFolder, fileInfo.CreationTime, DateTime.Now);
+                        bakFilePath, fileInfo.CreationTime, DateTime.Now);
                     ZipHelper.ZipFile(filePath, zipfilePath, null);
 
                     File.Delete(filePath);
