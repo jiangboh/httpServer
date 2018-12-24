@@ -635,10 +635,12 @@ namespace httpServer
                         else
                         {
                             Random rand = new Random(DateTime.Now.Millisecond);
-                            response.AppendCookie(new Cookie("session", string.Format("{0}{1}{2}{3}",
-                                rand.Next().ToString(), rand.Next().ToString(), 
-                                rand.Next().ToString(), rand.Next().ToString())));
-                            response.AppendCookie(new Cookie("sn", parameterStruct.xmlInform.SN));
+                            Cookie cookie = new Cookie("JSESSIONID", string.Format("{0}{1}{2}{3}",
+                                rand.Next().ToString(), rand.Next().ToString(),
+                                rand.Next().ToString(), rand.Next().ToString()));
+                            cookie.Path = "/";
+                            response.AppendCookie(cookie);
+                            //response.AppendCookie(new Cookie("sn", parameterStruct.xmlInform.SN));
                         }
 
                         if (String.Compare(parameterStruct.Method, RPCMethod.Inform, true) == 0)
