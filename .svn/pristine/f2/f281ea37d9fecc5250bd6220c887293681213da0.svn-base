@@ -1,0 +1,398 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace httpServer
+{
+    #region AP反向连接地址信息
+    /// <summary>
+    /// AP反向连接地址信息
+    /// </summary>
+    public class ConnectUrlInfo
+    {
+        private String url;
+        private String name;
+        private String passwd;
+
+        public ConnectUrlInfo() : this("", "", "")
+        {
+        }
+
+        public ConnectUrlInfo(String url, String name, String passwd)
+        {
+            this.url = url;
+            this.name = name;
+            this.passwd = passwd;
+        }
+
+        public string Url { get => url; set => url = value; }
+        public string Name { get => name; set => name = value; }
+        public string Passwd { get => passwd; set => passwd = value; }
+    }
+    #endregion 
+
+    #region 保存AP在线状态及当前连接地址的链表
+    public class ApConnHmsInfo
+    {
+        private String sn;
+        private DateTime time;
+        private String ip;
+        private int port;
+        private String[] eventCode;
+
+        public ApConnHmsInfo(String sn)
+        {
+            this.Sn = sn;
+            this.ip = "";
+            this.port = 0;
+            this.Time = DateTime.Now;
+            EventCode = new String[8];
+        }
+
+        public string Sn { get => sn; set => sn = value; }
+        public DateTime Time { get => time; set => time = value; }
+        public string Ip { get => ip; set => ip = value; }
+        public int Port { get => port; set => port = value; }
+        public string[] EventCode { get => eventCode; set => eventCode = value; }
+    }
+    public class ApConnHmsList
+    {
+        private static readonly object locker1 = new object();
+        private List<ApConnHmsInfo> connList;
+
+        private MySqlDbHelper myDB;
+
+        public ApConnHmsList()
+        {
+            connList = new List<ApConnHmsInfo>();
+            myDB = new MySqlDbHelper();
+        }
+
+        public List<ApConnHmsInfo> GetConnList()
+        {
+            lock (locker1)
+            {
+                return connList;
+            }
+        }
+
+        public int GetCount()
+        {
+            lock (locker1)
+            {
+                return connList.Count;
+            }
+        }
+
+        public void add(ApConnHmsInfo connInfo)
+        {
+            lock (locker1)
+            {
+                foreach (ApConnHmsInfo x in connList)
+                {
+                    if (String.Compare(x.Sn, connInfo.Sn, true) == 0)
+                    {
+                        connList.Remove(x);
+                        break;
+                    }
+                }
+                connInfo.Time = DateTime.Now;
+                connList.Add(connInfo);
+            }
+        }
+
+        public void add(List<String> snList)
+        {
+            lock (locker1)
+            {
+                foreach (String sn in snList)
+                {
+                    foreach (ApConnHmsInfo x in connList)
+                    {
+                        if (String.Compare(x.Sn, sn, true) == 0)
+                        {
+                            connList.Remove(x);
+                            break;
+                        }
+                    }
+                    ApConnHmsInfo connInfo = new ApConnHmsInfo(sn);
+                    connList.Add(connInfo);
+                }
+            }
+        }
+
+        public void add(String sn)
+        {
+            lock (locker1)
+            {
+                foreach (ApConnHmsInfo x in connList)
+                {
+                    if (String.Compare(x.Sn, sn, true) == 0)
+                    {
+                        connList.Remove(x);
+                        break;
+                    }
+                }
+                ApConnHmsInfo connInfo = new ApConnHmsInfo(sn);
+                connList.Add(connInfo);
+            }
+        }
+
+        public void remov(String sn)
+        {
+            lock (locker1)
+            {
+                foreach (ApConnHmsInfo x in connList)
+                {
+                    if (String.Compare(x.Sn, sn, true) == 0)
+                    {
+                        connList.Remove(x);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void CheckConnHmsStatus()
+        {
+            DateTime tNow = new DateTime();
+            tNow = DateTime.Now;
+            lock (locker1)
+            {
+                int i = 0;
+                while (i < GetCount())
+                {
+                    //List<ApConnHmsInfo> connList = GetConnList();
+                    TimeSpan timeSpan = tNow - connList[i].Time;
+                    //如果前次上线时间距当前时间大于4分钟，表示Ap已下线。
+                    double diff = timeSpan.TotalMinutes;
+                    if (diff >= GlobalParameter.ConnHmsWaitTime)
+                    {
+                        if (!myDB.SetconnHSToOffLine(connList[i].Sn))
+                        {
+                            Log.WriteError("设置AP(" + connList[i].Sn + ")为离线状态错误!");
+                            connList.RemoveAt(i);
+                        }
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+            }
+        }
+
+        public ApConnHmsInfo getSnForconnList(String ip, int port)
+        {
+            foreach (ApConnHmsInfo x in connList)
+            {
+                if (String.Compare(x.Ip, ip, true) == 0 && x.Port == port)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+
+    }
+    #endregion 
+
+    class MainFunction
+    {
+        private MySqlDbHelper myDB;
+
+        public MainFunction()
+        {
+            myDB = new MySqlDbHelper();
+        }
+
+        public void RunTaskThread()
+        {
+            new Thread(new ThreadStart(delegate {
+                try
+                {
+                    RunNextTask();
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteCrash(ex);
+                    GlobalParameter.httpServerRun = false;
+                }
+            })).Start();
+        }
+
+        public void RunNextTask()
+        {
+
+            GlobalParameter.apConnHmsList.add(myDB.GetconnHSByDeviceInfo());
+
+            while (GlobalParameter.httpServerRun)
+            {
+                List<String> snList = myDB.GetAllNoSendReqstSnByApTask();
+                foreach (String sn in snList)
+                {
+                    String url = "";String us = "";String pwd = "";
+                    if (!myDB.GetUrlInfoBySn(ref url, ref us, ref pwd, sn))
+                    {
+                        Log.WriteWarning("获取到的Url为空，不向该AP(" + sn + ")发送请求消息！");
+                    }
+                    else
+                    {
+                        ConnectUrlInfo urlInfo = new ConnectUrlInfo(url, us, pwd);
+                        HttpHandle.postUrl2Ap(urlInfo);
+                        if(!myDB.SetApTaskStatusToReqstBySN(sn))
+                        {
+                            Log.WriteError("设置AP("+ sn +")的所有任务状态为发送请求状态错误!");                       }
+                    }
+                }
+                Thread.Sleep(100);//休眠时间
+
+                //检查在线AP状态
+                GlobalParameter.apConnHmsList.CheckConnHmsStatus();
+
+                Thread.Sleep(100);//休眠时间
+            }
+        }
+
+        public XmlParameter[] cwmp_GetParameterValues(String[] ParameterName)
+        {
+            XmlParameter[] parmeterStruct = new XmlParameter[ParameterName.Length];
+
+
+            return parmeterStruct;
+        }
+
+        #region 测试消息
+        public String AddTaskTest_GetParameterValue()
+        {
+            //模拟获取参数值
+            string Id = "GetParameterValue";
+            if (!myDB.GetTaskId(TaskType.GetParameterValuesTask, ref Id))
+            {
+                return "";
+            }
+            String[] nameList = new string[2];
+            nameList[0] = "Device.DeviceInfo.AdditionalSoftwareVersion";
+            nameList[1] = "Device.Services.FAPService.1.CellConfig.LTE.RAN.Common.CellIdentity";
+            byte[] xmlStr = XmlHandle.CreateGetParameterValuesXmlFile(Id, nameList);
+
+            string[] snList = new string[1];
+            snList[0] = "EN1800S116340039";
+            myDB.AddTaskToTable("GetParameterValue", Id,
+                 TaskType.GetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            return System.Text.Encoding.Default.GetString(xmlStr);
+        }
+
+        public String AddTaskTest_SetParameterValue()
+        {
+            String Id = "SetParameterValue";
+            if (!myDB.GetTaskId(TaskType.SetParameterValuesTask, ref Id))
+            {
+                return "";
+            }
+            List<XmlParameter> parameterList = new List<XmlParameter>();
+            XmlParameter xmlParameter1 = new XmlParameter("Device.FAP.PerfMgmt.Config.1.Enable11", "1");
+            parameterList.Add(xmlParameter1);
+            //XmlParameter xmlParameter2 = new XmlParameter("Device.FAP.PerfMgmt.Config.1.URL", GlobalParameter.UploadServerUrl);
+            //parameterList.Add(xmlParameter2);
+            byte[] xmlStr = XmlHandle.CreateSetParameterValuesXmlFile(Id, parameterList);
+            if (xmlStr.Length <= 0)
+            {
+                Log.WriteInfo("生成XML文件出错！");
+                return "";
+            }
+
+            String[] snList = new String[1];
+            snList[0] = "EN1800S116340039";
+            myDB.AddTaskToTable("SetParameterValue",Id,
+                TaskType.SetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            return System.Text.Encoding.Default.GetString(xmlStr);
+        }
+
+        public String AddTaskTest_Reboot()
+        {
+            String Id = "Reboot";
+            if (!myDB.GetTaskId(TaskType.RebootTask, ref Id))
+            {
+                return "";
+            }
+
+            byte[] xmlStr = XmlHandle.CreateRebootXmlFile(Id);
+            if (xmlStr.Length <= 0)
+            {
+                Log.WriteInfo("生成XML文件出错！");
+                return "";
+            }
+
+            String[] snList = new String[1];
+            snList[0] = "EN1800S116340039";
+
+            myDB.AddTaskToTable("Reboot",Id,
+               TaskType.RebootTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            return System.Text.Encoding.Default.GetString(xmlStr);
+        }
+
+        public String AddTaskTest_GetLog()
+        {
+            String Id = "GetLog";
+            if (!myDB.GetTaskId(TaskType.GetLogTask, ref Id))
+            {
+                return "";
+            }
+
+            byte[] xmlStr = XmlHandle.CreateUploadXmlFile(Id, Id,
+                 1, "yu33.tar.gz", UploadFileType.VendorConfigurationFile);
+            if (xmlStr.Length <= 0)
+            {
+                Log.WriteInfo("生成XML文件出错！");
+                return "";
+            }
+
+
+            String[] snList = new String[1];
+            snList[0] = "EN1800S116340039";
+
+            myDB.AddTaskToTable("Reboot", Id,
+                TaskType.GetLogTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            return System.Text.Encoding.Default.GetString(xmlStr);
+        }
+
+        public String AddTaskTest_Upgrad()
+        {
+            String Id = "Upgrad";
+            if (!myDB.GetTaskId(TaskType.UpgradTask, ref Id))
+            {
+                return "";
+            }
+
+            byte[] xmlStr = XmlHandle.CreateDownloadXmlFile(Id, Id,
+                 1, "data.xml", DownloadFileType.FirmwareUpgradeImage);
+            if (xmlStr.Length <= 0 )
+            {
+                Log.WriteInfo("生成XML文件出错！");
+                return "";
+            }
+
+            String[] snList = new String[1];
+            snList[0] = "EN1800S116340039";
+
+            myDB.AddTaskToTable("Upgrad", Id,
+                TaskType.UpgradTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            return System.Text.Encoding.Default.GetString(xmlStr);
+        }
+
+
+
+        #endregion
+
+
+    }
+}

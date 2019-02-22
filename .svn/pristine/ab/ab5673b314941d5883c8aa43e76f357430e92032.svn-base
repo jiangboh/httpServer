@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
+    </startup>
+	<connectionStrings>
+		<add name="dbConStr" connectionString="Server=172.170.8.130;Database=hsdatabase;UserID=root;Password=root"/>
+	</connectionStrings>
+
+	<appSettings>
+		<add key="HttpServerIp" value="192..168.88.101" />
+		<add key="HttpServerName" value="173.21.21.1" />
+		<add key="HttpServerPasswd" value="173.21.21.1" />
+		
+		<add key="Ntp1ServerPath" value="173.21.21.1" />
+		<add key="Ntp2ServerPath" value="173.21.21.1" />
+		
+		<add key="ConnectionRequestUsername" value="name" />
+		<add key="ConnectionRequestPassWd" value="passwd" />
+		
+		<add key="UploadServerRootPath" value="d:\\" />
+		<add key="UploadServerUrl" value="http://173.21.21.1:123" />
+		<add key="UploadServerUser" value="uploadName" />
+		<add key="UploadServerPasswd" value="uploadPasswd" />
+
+		<add key="ApOffLineTime" value="4" />
+		<add key="XmlRootNode" value="Device." />
+		
+		<add key="MaxLogFileSize" value="1000000" />
+		
+	</appSettings>
+</configuration>

@@ -1,0 +1,440 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+
+namespace httpServer
+{
+    class DateBaseHandle
+    {
+        private MySqlConnection sqlCon;
+        
+        private String T_tasktable = "schedulerinfo";
+        private String T_versiontable = "versioninfo";
+
+        private String T_aptask = "apaction";
+        private String K_upgradTaskStatus = "upgradeStatus";
+        private String K_getLogTaskStatus = "getLogStatus";
+        private String K_getParameterValuesStatus = "getParStatus";
+        private String K_setParameterValuesStatus = "setParStatus";
+
+        private String T_apConnInfo = "apconninfo";
+        private String K_url = "url";
+        private String K_username = "userName";
+        private String K_passwd = "psw";
+        private String K_sn = "sn";
+
+        private String T_deviceinfo = "deviceinfo";
+        private String K_Device_sn = "sn";
+        private String K_Device_connHS = "connHS";
+
+        public DateBaseHandle(String ip,String datebase,String user,String passwd)
+        {
+            string M_str_sqlcon = "server=" + ip + ";User Id=" + user +";password="+passwd +";Database=" + datebase; //根据自己的设置
+            sqlCon = new MySqlConnection(M_str_sqlcon);
+            //this.open();
+        }
+
+        public DateBaseHandle() : this("172.17.8.130", "hsdatabase", "root","root")
+        {
+        }
+
+        public void open()
+        {
+            sqlCon.Open();
+        }
+
+        public void close()
+        {
+            sqlCon.Close();
+        }
+
+        public bool insert(String tab, String[] name, String[] value)
+        {
+            if (name.Length == 0) return false;
+            if (name.Length != value.Length) return false;
+
+            String nameStr = name[0];
+            String valueStr = "'" + value[0] + "'";
+
+            for (int i = 1; i < name.Length; i++)
+            {
+                nameStr = nameStr + "," + name[i];
+                valueStr = valueStr + "," + "'" + value[i] + "'";
+            }
+
+            string sqlstr = string.Format("INSERT INTO {0}({1}) values({1})", tab,nameStr,valueStr);
+            using (MySqlCommand mycmd = new MySqlCommand(sqlstr, sqlCon)) 
+            {
+                if (mycmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        //
+        // 摘要:
+        //     从数据库获取是否有该ap的待发送任务。
+        //
+        // 参数:
+        //     sn:
+        //     要获取ap的sn号。
+        //
+        // 返回结果:
+        //     该任务的要下发的xml文件。
+        public byte[] GetTaskBySN(ref TaskType taskType ,String sn)
+        {
+            if ((GetTaskStatusByApTask(sn,TaskType.GetParameterValuesTask) != TaskStatus.SendReqst) &&
+                (GetTaskStatusByApTask(sn, TaskType.SetParameterValuesTask) != TaskStatus.SendReqst) &&
+                (GetTaskStatusByApTask(sn, TaskType.UpgradTask) != TaskStatus.SendReqst) &&
+                (GetTaskStatusByApTask(sn, TaskType.GetLogTask) != TaskStatus.SendReqst))
+                return System.Text.Encoding.ASCII.GetBytes("");
+
+            //以下为测试过程，实现时请删除
+            taskType = TaskType.GetParameterValuesTask;
+
+            //模拟获取参数值
+            //String[] nameList = new string[2];
+            //nameList[0] = "Device.DeviceInfo.AdditionalSoftwareVersion";
+            //nameList[1] = "Device.Services.FAPService.1.CellConfig.LTE.RAN.Common.CellIdentity";
+            //return XmlHandle.CreateGetParameterValuesXmlFile(nameList);
+
+
+            //模拟设置参数值
+            //String Id = "SetParameterValueFor1Boot";
+            //List<XmlParameter> parameterList = new List<XmlParameter>();
+            //XmlParameter xmlParameter1 = new XmlParameter("Device.FAP.PerfMgmt.Config.1.Enable", "1");
+            //parameterList.Add(xmlParameter1);
+            //XmlParameter xmlParameter2 = new XmlParameter("Device.FAP.PerfMgmt.Config.1.URL", GlobalParameter.UploadServerUrl);
+            //parameterList.Add(xmlParameter2);
+            //return XmlHandle.CreateSetParameterValuesXmlFile(Id, parameterList);
+            
+            //模拟日志上传
+            return XmlHandle.CreateUploadXmlFile("upload", "commandkeyllll", 1, "yu33.tar.gz", UploadFileType.VendorConfigurationFile);
+        }
+
+        //
+        // 摘要:
+        //     将apTask表状态为 TaskStatus.NoSendReqst 的类型任务，修改为TaskStatus.SendReqst状态。
+        //
+        // 参数:
+        //     sn:
+        //     要修改ap的sn号。
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool SetApTaskStatusToReqstBySN(String sn)
+        {
+            bool ret = false;
+            List<String> status = new List<String>();
+            status.Add(K_upgradTaskStatus);
+            status.Add(K_getLogTaskStatus);
+            status.Add(K_getParameterValuesStatus);
+            status.Add(K_setParameterValuesStatus);
+
+            foreach (String str in status)
+            {
+                string sqlstr = string.Format("UPDATE {0} SET {1}='{2}' WHERE {3}='{4}' AND {5}='{6}'",
+                    T_aptask, str,(int)TaskStatus.SendReqst ,str, (int)TaskStatus.NoSendReqst,K_sn,sn);
+                try
+                { 
+                    using (MySqlCommand mycmd = new MySqlCommand(sqlstr, sqlCon))
+                    {
+                        if (mycmd.ExecuteNonQuery() > 0)
+                        {
+                            ret = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+                }
+            }
+            return ret;
+        }
+
+        //
+        // 摘要:
+        //     从apTask表中获取有状态为 TaskStatus.NoSendReqst 的所有sn号
+        //
+        // 参数:
+        //     
+        //
+        // 返回结果:
+        //     所有的SN集合。
+        public TaskStatus GetTaskStatusByApTask(String sn, TaskType type)
+        {
+            TaskStatus status = TaskStatus.TaskNull;
+            String taskId = "";
+
+            if (type == TaskType.UpgradTask)
+            {
+                taskId = K_upgradTaskStatus;
+            }
+            else if (type == TaskType.GetLogTask)
+            {
+                taskId = K_getLogTaskStatus;
+            }
+            else if (type == TaskType.GetParameterValuesTask)
+            {
+                taskId = K_getParameterValuesStatus;
+            }
+            else if (type == TaskType.SetParameterValuesTask)
+            {
+                taskId = K_setParameterValuesStatus;
+            }
+            else
+            {
+                Log.WriteError("任务类型为" + type + "。暂不支持该任务。");
+                return status;
+            }
+
+            string sqlstr = string.Format("SELECT {0} FROM {1} WHERE {2} = '{3}'",taskId,T_aptask,K_sn,sn);
+            try
+            { 
+                using (MySqlCommand cmdList = new MySqlCommand(sqlstr, sqlCon))
+                {
+                    using (MySqlDataReader dr = cmdList.ExecuteReader())
+                    {
+                        //将结果赋值到了dr，下面开始输出                    
+                        while (dr.Read())
+                        {
+                            status = (TaskStatus)int.Parse(dr[0].ToString());
+                            break;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+            }
+            return status;
+        }
+
+        //
+        // 摘要:
+        //     从apTask表中获取有状态为 TaskStatus.NoSendReqst 的所有sn号
+        //
+        // 参数:
+        //     
+        //
+        // 返回结果:
+        //     所有的SN集合。
+        public List<String>  GetAllNoSendReqstSnByApTask()
+        {
+            List<String> sn = new List<String>();
+
+            string sqlstr = string.Format("SELECT {0} FROM {1} WHERE {2} = '{6}' OR {3} = '{6}' OR {4} = '{6}' OR {5} = '{6}'",
+                K_sn,T_aptask, K_upgradTaskStatus, K_getLogTaskStatus, K_getParameterValuesStatus, K_setParameterValuesStatus,(int)TaskStatus.NoSendReqst);
+
+            try
+            { 
+                using (MySqlCommand cmdList = new MySqlCommand(sqlstr, sqlCon))
+                {
+                    using (MySqlDataReader dr = cmdList.ExecuteReader())
+                    {
+                        //将结果赋值到了dr，下面开始输出                    
+                        while (dr.Read())
+                        {
+                            sn.Add(dr[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+            }
+            return sn;
+        }
+
+        //
+        // 摘要:
+        //     修改apTask表中的任务状态
+        //
+        // 参数:
+        //     sn:要修改ap的sn号。
+        //     type:要修改状态的任务类型
+        //     status:修改后状态
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool SetApTaskStatusBySN(String sn, TaskType type,TaskStatus status )
+        {
+            String taskId = "";
+            if (status <= TaskStatus.SendReqst)
+            {
+                Log.WriteError("修改后状态为" + status + "小于SendReqst。请使用其它函数。");
+                return false;
+            }
+            if (type == TaskType.UpgradTask)
+            {
+                taskId = K_upgradTaskStatus;
+            }
+            else if (type == TaskType.GetLogTask)
+            {
+                taskId = K_getLogTaskStatus;
+            }
+            else if (type == TaskType.GetParameterValuesTask)
+            {
+                taskId = K_getParameterValuesStatus;
+            }
+            else if (type == TaskType.SetParameterValuesTask)
+            {
+                taskId = K_setParameterValuesStatus;
+            }
+            else
+            {
+                Log.WriteError("任务类型为" + type + "。暂不支持该任务。");
+                return false;
+            }
+
+            string sqlstr = string.Format("UPDATE {0} SET {1}='{2}' WHERE {3}='{4}'", 
+                T_aptask,taskId, (int)status, K_sn,sn);
+            try
+            { 
+                using (MySqlCommand mycmd = new MySqlCommand(sqlstr, sqlCon))
+                {
+                    if (mycmd.ExecuteNonQuery() > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+            }
+            return false;
+        }
+
+        //
+        // 摘要:
+        //     向apTask表及tasktable表添加新任务（任务id根据任务类型及时间自动产生）
+        //
+        // 参数:
+        //     name:任务名称；
+        //     type:要修改状态的任务类型
+        //     xml:任务要下发的xml文件
+        //     sn:要修改ap的sn号。
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool AddTaskToTable(String name,TaskType type,String xml,String[] sn)
+        {
+            return true;
+        }
+
+        //
+        // 摘要:
+        //     从DataBaseInfo.T_apConnInfo表查找AP反向连接信息
+        //
+        // 参数:
+        //     sn:要查找ap的sn号。
+        //
+        // 返回结果:
+        //     返回反向连接的url。
+        public ConnectUrlInfo GetUrlInfoBySn(String sn)
+        {
+            ConnectUrlInfo urlInfo = new ConnectUrlInfo();
+
+            string sqlstr = string.Format("SELECT {0}, {1}, {2} FROM {3} WHERE {4} ='{5}'" , 
+                K_url,K_username,K_passwd,T_apConnInfo,K_sn,sn);
+            try
+            { 
+                using (MySqlCommand cmdList = new MySqlCommand(sqlstr, sqlCon))
+                {
+                    using (MySqlDataReader dr = cmdList.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            urlInfo.Url = dr[0].ToString();
+                            urlInfo.Name = dr[1].ToString();
+                            urlInfo.Passwd = dr[2].ToString();
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+            }
+            return urlInfo;
+        }
+
+        //
+        // 摘要:
+        //     从DataBaseInfo.T_deviceinfo表查找所有在线AP的sn
+        //
+        // 参数:
+        //     无。
+        //
+        // 返回结果:
+        //     所有在线的sn。
+        public List<String> GetconnHSByDeviceInfo()
+        {
+            List<String> snList = new List<String>();
+
+            string sqlstr = string.Format("SELECT {0} FROM {1} WHERE {2} ='online'",
+                K_Device_sn, T_deviceinfo, K_Device_connHS);
+            try
+            {
+                using (MySqlCommand cmdList = new MySqlCommand(sqlstr, sqlCon))
+                {
+                    using (MySqlDataReader dr = cmdList.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            snList.Add( dr[0].ToString());
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+            }
+            return snList;
+        }
+
+
+        //
+        // 摘要:
+        //     从DataBaseInfo.T_deviceinfo表设置AP的在线状态为离线
+        //
+        // 参数:
+        //     sn:
+        //     要修改ap的sn号。
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool SetconnHSToOffLine(String sn)
+        {
+            bool ret = false;
+  
+            string sqlstr = string.Format("UPDATE {0} SET {1}='offline' WHERE {2}='{3}'",
+                T_deviceinfo,K_Device_connHS,K_Device_sn,sn);
+            try
+            {
+                using (MySqlCommand mycmd = new MySqlCommand(sqlstr, sqlCon))
+                {
+                    if (mycmd.ExecuteNonQuery() > 0)
+                    {
+                        ret = true;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.WriteWarning(string.Format("执行Sql语名({0})出错，出错消息：{1}。", sqlstr, ex.Message));
+            }
+            
+            return ret;
+        }
+    }
+}

@@ -1,0 +1,111 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace httpServer
+{
+    class MainFunction
+    {
+        public void RunTaskThread()
+        {
+            new Thread(new ThreadStart(delegate {
+                try
+                {
+                    RunNextTask();
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteCrash(ex);
+                    GlobalParameter.httpServerRun = false;
+                }
+            })).Start();
+        }
+
+        private void GetAllConnSN(List<String> snList)
+        {
+            foreach (String sn in snList)
+            {
+                ApConnHmsInfo connInfo = new ApConnHmsInfo(sn);
+                GlobalParameter.connList.Add(connInfo);
+            }
+        }
+
+        private SnIpPortNode getSnForSnIpPortNode(String ip, int port)
+        {
+            foreach (SnIpPortNode x in snList)
+            {
+                if (String.Compare(x.ip, ip, true) == 0 && x.port == port)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+        public void RunNextTask()
+        {
+            DateBaseHandle db = new DateBaseHandle();
+            db.open();
+
+            GetAllConnSN(db.GetconnHSByDeviceInfo());
+
+            while (GlobalParameter.httpServerRun)
+            {
+                List<String> snList = db.GetAllNoSendReqstSnByApTask();
+                foreach(String sn in snList)
+                {
+                    ConnectUrlInfo urlInfo = db.GetUrlInfoBySn(sn);
+                    if (urlInfo.Url.Length <= 0)
+                    {
+                        Log.WriteWarning("获取到的Url为空，不向该AP(" + sn + ")发送请求消息！");
+                    }
+                    else
+                    {
+                        HttpHandle.postUrl2Ap(urlInfo);
+                        db.SetApTaskStatusToReqstBySN(sn);
+                    }
+                }
+
+                DateTime tNow = new DateTime();
+                foreach (ApConnHmsInfo connInfo in GlobalParameter.connList)
+                {
+                    TimeSpan timeSpan = tNow - connInfo.Time;
+                    //如果前次上线时间距当前时间大于4分钟，表示Ap已下线。
+                    if(timeSpan.TotalMinutes > 4)
+                    {
+                        db.SetconnHSToOffLine(connInfo.Sn);
+                    }
+                }
+
+                Thread.Sleep(200);//休眠时间
+            }
+            db.close();
+        }
+
+        public XmlParameter[] cwmp_GetParameterValues(String[] ParameterName)
+        {
+            XmlParameter[] parmeterStruct = new XmlParameter[ParameterName.Length];
+
+
+            return parmeterStruct;
+        }
+
+        public void AddUpgradTaskToDatebase()
+        {
+            DateBaseHandle db = new DateBaseHandle();
+            db.open();
+
+            String[] nameList = new string[2];
+            nameList[0] = "SN";
+            nameList[1] = "IMSI";
+
+            String[] valueList = new string[2];
+            valueList[0] = "123456";
+            valueList[1] = "1789789";
+
+            //bool dd = db.insert(T_apConnInfo, nameList, valueList);
+        }
+    }
+}

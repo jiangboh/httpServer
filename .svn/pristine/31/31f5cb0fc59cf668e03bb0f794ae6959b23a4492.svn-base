@@ -1,0 +1,137 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Net.Sockets;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace httpServer
+{
+
+
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        
+
+       
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            new HttpHandle().RunHttpServerThread();
+            new MainFunction().RunTaskThread();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //模拟获取参数值
+            textBox1.Text = "";
+
+            string Id = "GetParameterValue";
+            if (!GlobalParameter.myDB.GetTaskId(TaskType.GetParameterValuesTask, ref Id))
+            {
+                return;
+            }
+            String[] nameList = new string[2];
+            nameList[0] = "Device.DeviceInfo.AdditionalSoftwareVersion";
+            nameList[1] = "Device.Services.FAPService.1.CellConfig.LTE.RAN.Common.CellIdentity";
+            byte[] xmlStr = XmlHandle.CreateGetParameterValuesXmlFile(Id, nameList);
+
+            String[] snList = new String[1];
+            snList[0] = "";
+            GlobalParameter.myDB.AddTaskToTable("GetParameterValue", Id,
+                TaskType.GetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            textBox1.Text = System.Text.Encoding.Default.GetString(xmlStr);
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            String Id = "SetParameterValue";
+            if (!GlobalParameter.myDB.GetTaskId(TaskType.SetParameterValuesTask, ref Id))
+            {
+                return;
+            }
+            List<XmlParameter> parameterList = new List<XmlParameter>();
+            XmlParameter xmlParameter1 = new XmlParameter("Device.FAP.PerfMgmt.Config.1.Enable11", "1");
+            parameterList.Add(xmlParameter1);
+            XmlParameter xmlParameter2 = new XmlParameter("Device.FAP.PerfMgmt.Config.1.URL", GlobalParameter.UploadServerUrl);
+            parameterList.Add(xmlParameter2);
+            byte[] xmlStr = XmlHandle.CreateSetParameterValuesXmlFile(Id, parameterList);
+
+            String[] snList = new String[1];
+            snList[0] = "";
+            GlobalParameter.myDB.AddTaskToTable("SetParameterValue",Id,
+                TaskType.SetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+            textBox1.Text = System.Text.Encoding.Default.GetString(xmlStr);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            String Id = "Reboot";
+            if (!GlobalParameter.myDB.GetTaskId(TaskType.RebootTask, ref Id))
+            {
+                return ;
+            }
+
+            byte[] xmlStr = XmlHandle.CreateRebootXmlFile(Id);
+
+            String[] snList = new String[1];
+            snList[0] = "";
+
+            
+            GlobalParameter.myDB.AddTaskToTable("Reboot",Id,
+                TaskType.RebootTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+
+            textBox1.Text = System.Text.Encoding.Default.GetString(xmlStr);
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            textBox1.Text = "";
+            String Id = "Upgrad";
+            if (!GlobalParameter.myDB.GetTaskId(TaskType.UpgradTask, ref Id))
+            {
+                return;
+            }
+
+            byte[] xmlStr = XmlHandle.CreateUploadXmlFile(Id,Id ,
+                 1, "yu33.tar.gz", UploadFileType.VendorConfigurationFile);
+
+            String[] snList = new String[1];
+            snList[0] = "";
+
+
+            GlobalParameter.myDB.AddTaskToTable("Reboot", Id,
+                TaskType.UpgradTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+
+
+            textBox1.Text = System.Text.Encoding.Default.GetString(xmlStr);
+        }
+    }
+    
+}

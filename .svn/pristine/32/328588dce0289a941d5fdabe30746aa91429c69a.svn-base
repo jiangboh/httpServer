@@ -1,0 +1,588 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Xml;
+
+namespace httpServer
+{
+    class XmlParameter  
+    {
+        public String name;
+        public String value;
+        public String valueType;
+    };
+    class Node     //结点  
+    {
+        public XmlParameter data;
+        public Node next;
+    }
+    class ParameterNode
+    {
+        public Node head = new Node();    //头结点  
+
+        public ParameterNode()
+        {
+            head.data = null;
+        }
+
+        public bool CreateLink()   //创建链表  
+        {
+            head.next = null;
+            return true;
+        }
+
+        public int GetLength()    //获取链表head的长度  
+        {
+            int length;     //长度  
+            length = 0;
+            Node temp = new Node();
+            temp = head;
+            while (temp.next != null)
+            {
+                length++;
+                temp = temp.next;
+            }
+            return length;
+        }
+        public bool InsertNodeToEnd(XmlParameter s)  //在位置position插入数据为s的节点  
+        {
+            Node temp = new Node();
+            temp = head;
+
+            if (temp.data == null)
+            {
+                temp.data = s;
+                return true;
+            }  
+
+            while (temp.next != null)
+            {
+                temp = temp.next;
+            }
+
+            Node newNode = new Node();
+            newNode.data = s;
+            newNode.next = null;
+
+            temp.next = newNode;
+
+            return true;
+        }
+
+        public bool InsertNode(int position, XmlParameter s)  //在位置position插入数据为s的节点  
+        {
+            if (position <= 0 || position > GetLength() + 1)  //越界  
+            {
+                Console.WriteLine("插入位置越界");
+                return false;
+            }
+            else
+            {
+                Node newNode = new Node();
+                newNode.data = s;
+                Node temp = head;
+                for (int i = 0; i < position; i++)
+                {
+                    if (i == position - 1)
+                    {
+                        newNode.next = temp.next;
+                        temp.next = newNode;
+                    }
+                    temp = temp.next;
+                }
+            }
+            return true;
+        }
+        public bool GetItem(int position, ref XmlParameter s)  //获取位置position的元素s  
+        {
+            if (position < 1 || position > GetLength())   //越界  
+            {
+                Console.WriteLine("不存在此位置");
+                return false;
+            }
+            else
+            {
+                Node temp = new Node();
+                temp = head;
+                for (int i = 0; i < position; i++)
+                {
+                    if (i == position - 1)
+                    {
+                        s = temp.next.data;
+                    }
+                    temp = temp.next;
+                }
+            }
+            return true;
+        }
+
+        public bool deleteItem(int position)     //删除position位置的元素  
+        {
+            if (position < 1 || position > GetLength())
+            {
+                Console.WriteLine("不存在此位置");
+            }
+            Node temp = new Node();
+            temp = head;
+            for (int i = 0; i < position; i++)
+            {
+                if (i == position - 1)
+                {
+                    temp.next = temp.next.next;
+                }
+                temp = temp.next;
+            }
+            return true;
+        }
+        public void OutLink()   //输出链表  
+        {
+            Node temp = new Node();
+            temp = head;
+            while (temp.next != null)
+            {
+                Console.WriteLine(temp.data);
+                temp = temp.next;
+            }
+        }
+    }
+    class XmlInform
+    {
+        public String Manufacturer;
+        public String OUI;
+        public String ProductClass;
+        public String SN;
+        public String Imsi;
+        public String CurrentTime;
+        [MarshalAs(UnmanagedType.AnsiBStr, SizeConst = 16, ArraySubType = UnmanagedType.AnsiBStr)]
+        public String[] EventCode;
+
+        public XmlInform()
+        {
+            EventCode = new String[16];
+        }
+    }
+
+    class XmlParameterStruct
+    {
+        public String Method;
+        public XmlInform xmlInform;
+        public ParameterNode parameterNode;
+
+        public XmlParameterStruct()
+        {
+            xmlInform = new XmlInform();
+            parameterNode = new ParameterNode();
+        }
+    }
+
+    class XmlMethodStruct
+    {
+        public String Method;
+        public XmlNode BodyNode;
+    }
+    class XmlHandle
+    { 
+
+        public void recvApMessage(String msg)
+        {
+           // MessageBox.Show(msg);
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.LoadXml(msg);
+            var root = xmlDoc.DocumentElement;//取到根结点
+
+            //XmlElement element = (XmlElement)xmlDoc.SelectSingleNode("Header");
+            //string name = element.GetAttribute("Header");
+            //MessageBox.Show(name);
+        }
+
+        static public XmlDocument CreateRootNode(String Id)
+        {
+            //初始化一个xml实例
+            XmlDocument myXmlDoc = new XmlDocument();
+            try
+            {
+                //创建xml的根节点
+                XmlElement rootElement = myXmlDoc.CreateElement("SOAP-ENV:Envelope", "http://schemas.xmlsoap.org/soap/envelope/");
+                rootElement.SetAttribute("xmlns:SOAP-ENV", "http://schemas.xmlsoap.org/soap/envelope/");
+                rootElement.SetAttribute("xmlns:SOAP-ENC", "http://schemas.xmlsoap.org/soap/encoding/");
+                rootElement.SetAttribute("xmlns:cwmp", "urn:dslforum-org:cwmp-1-0");
+                rootElement.SetAttribute("xmlns:xsd", "http://www.w3.org/2001/XMLSchema");
+                rootElement.SetAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
+                //将根节点加入到xml文件中（AppendChild）
+                myXmlDoc.AppendChild(rootElement);
+
+                //初始化第一层的第一个子节点
+                XmlElement levelElement1 = myXmlDoc.CreateElement("SOAP-ENV:Header", "http://schemas.xmlsoap.org/soap/envelope/");
+                //将第一层的第一个子节点加入到根节点下
+                rootElement.AppendChild(levelElement1);
+
+                //初始化第二层的第一个子节点
+                XmlElement levelElement11 = myXmlDoc.CreateElement("cwmp", "ID", "urn:dslforum-org:cwmp-1-0");
+                levelElement11.SetAttribute("mustUnderstand", "http://schemas.xmlsoap.org/soap/envelope/", "1");
+                //填充第二层的第一个子节点的值（InnerText）
+                levelElement11.InnerText = Id;
+                levelElement1.AppendChild(levelElement11);
+
+                XmlElement levelElement12 = myXmlDoc.CreateElement("cwmp", "NoMoreRequests", "urn:dslforum-org:cwmp-1-0");
+                levelElement12.InnerText = "0";
+                levelElement1.AppendChild(levelElement12);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                String err = ex.ToString();
+                return null;
+            }
+
+            return myXmlDoc;
+        }
+
+        static public byte[] CreateInformResponseXmlFile()
+        {
+
+            byte[] data;
+            try
+            {
+                XmlDocument myXmlDoc = CreateRootNode("inform");
+                if (myXmlDoc == null) return Encoding.UTF8.GetBytes(""); 
+
+                XmlElement rootElement = myXmlDoc.DocumentElement;
+
+                XmlElement levelElement2 = myXmlDoc.CreateElement("SOAP-ENV:Body", "http://schemas.xmlsoap.org/soap/envelope/");
+                rootElement.AppendChild(levelElement2);
+
+                XmlElement levelElement21 = myXmlDoc.CreateElement("cwmp", "InformResponse", "urn:dslforum-org:cwmp-1-0");
+                levelElement2.AppendChild(levelElement21);
+                XmlElement levelElement211 = myXmlDoc.CreateElement("MaxEnvelopes");
+                levelElement211.InnerText = "1";
+                levelElement21.AppendChild(levelElement211);
+
+                //将xml文件保存到指定的路径下
+                myXmlDoc.Save("d://data2.xml");
+
+                MemoryStream ms = new MemoryStream();
+                myXmlDoc.Save(ms);
+                data = ms.ToArray();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                String err = ex.ToString();
+                data = Encoding.UTF8.GetBytes("");
+            }
+            return data;
+        }
+
+        static public byte[] CreateDownloadXmlFile(String id,String CommandKey,int DelaySeconds,String FileName)
+        {
+            byte[] data;
+            try
+            {
+                String filePath = GlobalParameter.HttpServerPath + FileName; //升级包存放路径。
+
+                FileInfo fileInfo = new FileInfo(filePath);
+                long fileSize = fileInfo.Length;
+     
+                if (fileSize <=0) return Encoding.UTF8.GetBytes("");
+
+                String url = "http://" + GlobalParameter.ThisIp + "/patch/" + FileName;
+
+                XmlDocument myXmlDoc = CreateRootNode(id);
+                if (myXmlDoc == null) return Encoding.UTF8.GetBytes(""); ;
+
+                XmlElement rootElement = myXmlDoc.DocumentElement;
+
+                XmlElement levelElement2 = myXmlDoc.CreateElement("SOAP-ENV:Body", "http://schemas.xmlsoap.org/soap/envelope/");
+                rootElement.AppendChild(levelElement2);
+
+                XmlElement levelElement21 = myXmlDoc.CreateElement("cwmp", "Download", "urn:dslforum-org:cwmp-1-0");
+                levelElement2.AppendChild(levelElement21);
+                XmlElement levelElement211 = myXmlDoc.CreateElement("CommandKey");
+                levelElement211.InnerText = CommandKey;
+                levelElement21.AppendChild(levelElement211);
+                XmlElement levelElement212 = myXmlDoc.CreateElement("FileType");
+                levelElement212.InnerText = "1 Firmware Upgrade Image";
+                levelElement21.AppendChild(levelElement212);
+                XmlElement levelElement213 = myXmlDoc.CreateElement("URL");
+                levelElement213.InnerText = url;
+                levelElement21.AppendChild(levelElement213);
+                XmlElement levelElement214 = myXmlDoc.CreateElement("Username");
+                levelElement214.InnerText = GlobalParameter.HttpServerName;
+                levelElement21.AppendChild(levelElement214);
+                XmlElement levelElement215 = myXmlDoc.CreateElement("Password");
+                levelElement215.InnerText = GlobalParameter.HttpServerPasswd;
+                levelElement21.AppendChild(levelElement215);
+                XmlElement levelElement216 = myXmlDoc.CreateElement("FileSize");
+                levelElement216.InnerText = fileSize.ToString();
+                levelElement21.AppendChild(levelElement216);
+                XmlElement levelElement217 = myXmlDoc.CreateElement("DelaySeconds");
+                levelElement217.InnerText = DelaySeconds.ToString();
+                levelElement21.AppendChild(levelElement217);
+
+                //将xml文件保存到指定的路径下
+                myXmlDoc.Save("d://data2.xml");
+
+                MemoryStream ms = new MemoryStream();
+                myXmlDoc.Save(ms);
+                data = ms.ToArray();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                String err = ex.ToString();
+                data = Encoding.UTF8.GetBytes("");
+            }
+            return data;
+        }
+
+        static public byte[] CreateGetParameterValuesXmlFile(String[] ParameterName)
+        {
+            byte[] data;
+            try
+            {
+                XmlDocument myXmlDoc = CreateRootNode("ID:intrnl.unset.id.GetParameterValues1503549144995.1742124437");
+                if (myXmlDoc == null) return Encoding.UTF8.GetBytes(""); ;
+
+                XmlElement rootElement = myXmlDoc.DocumentElement;
+
+                XmlElement levelElement2 = myXmlDoc.CreateElement("SOAP-ENV:Body", "http://schemas.xmlsoap.org/soap/envelope/");
+                rootElement.AppendChild(levelElement2);
+
+                XmlElement levelElement21 = myXmlDoc.CreateElement("cwmp", "GetParameterValues", "urn:dslforum-org:cwmp-1-0");
+                levelElement2.AppendChild(levelElement21);
+                XmlElement levelElement211 = myXmlDoc.CreateElement("ParameterNames");
+                levelElement211.SetAttribute("arrayType", "http://schemas.xmlsoap.org/soap/encoding/", "xsd:string[" + ParameterName.Length + "]");
+                levelElement21.AppendChild(levelElement211);
+                
+                foreach (String name in ParameterName)
+                {
+                    XmlElement levelElement2111 = myXmlDoc.CreateElement("string");
+                    levelElement2111.InnerText = name;
+                    levelElement211.AppendChild(levelElement2111);
+                }
+
+
+                //将xml文件保存到指定的路径下
+                myXmlDoc.Save("d://data2.xml");
+
+                MemoryStream ms = new MemoryStream();
+                myXmlDoc.Save(ms);
+                data = ms.ToArray();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                String err = ex.ToString();
+                data = Encoding.UTF8.GetBytes(""); 
+            }
+            return data;
+        }
+
+        static private XmlNode Get_Node_By_NodeName(XmlNodeList listNodes, String NodeName)
+        {
+            if (listNodes == null) return null;
+
+            foreach (XmlNode node in listNodes)
+            {
+                if (String.Compare(node.Name, NodeName, true) == 0)
+                {
+                    return node;
+                }
+            }
+            return null;
+        }
+
+        static private XmlMethodStruct Get_Xml_Msg_Method(String msg)
+        {
+            XmlMethodStruct xmlStruct = new XmlMethodStruct();
+
+            // MessageBox.Show(msg);
+            XmlDocument xmlDoc = new XmlDocument();
+            if (msg == null)
+                xmlDoc.Load("d:\\data.xml");
+            else
+                xmlDoc.LoadXml(msg);
+
+            var root = xmlDoc.DocumentElement;//取到根结点
+            XmlNodeList listNodes = null;
+            listNodes = root.ChildNodes;
+
+            XmlNode HeaderNode = Get_Node_By_NodeName(listNodes, "SOAP-ENV:Header");
+            if (HeaderNode == null) return null;
+
+            XmlNode BodyNode = Get_Node_By_NodeName(listNodes, "SOAP-ENV:Body");
+            if (BodyNode == null) return null;
+
+            xmlStruct.BodyNode = BodyNode;
+
+            XmlNode BodyInformNode = BodyNode.FirstChild;
+            if (BodyInformNode == null) return null;
+
+            xmlStruct.Method = BodyInformNode.Name;
+
+            return xmlStruct;
+        }
+
+        static private XmlInform Get_Xml_Msg_Inform(XmlMethodStruct xmlStruct)
+        {
+            if (xmlStruct == null) return null;
+
+            if (String.Compare(xmlStruct.Method, "Cwmp:Inform", true) != 0) return null;
+
+            XmlNode BodyNode = xmlStruct.BodyNode;
+            if (BodyNode == null) return null;
+
+            XmlNode BodyInformNode = BodyNode.FirstChild;
+            if (BodyInformNode == null) return null;
+
+            XmlInform xmlInform = new XmlInform();
+
+            /*获取DeviceId信息*/
+            XmlNode DeviceIdNode = null;
+            DeviceIdNode = BodyInformNode.SelectSingleNode("DeviceId/OUI");
+            if (DeviceIdNode != null)
+                xmlInform.OUI = DeviceIdNode.InnerText;
+            DeviceIdNode = BodyInformNode.SelectSingleNode("DeviceId/Manufacturer");
+            if (DeviceIdNode != null)
+                xmlInform.Manufacturer = DeviceIdNode.InnerText;
+            DeviceIdNode = BodyInformNode.SelectSingleNode("DeviceId/ProductClass");
+            if (DeviceIdNode != null)
+                xmlInform.ProductClass = DeviceIdNode.InnerText;
+            DeviceIdNode = BodyInformNode.SelectSingleNode("DeviceId/SerialNumber");
+            if (DeviceIdNode != null)
+                xmlInform.Imsi = DeviceIdNode.InnerText;
+
+            XmlNode CurrentTimeNode = Get_Node_By_NodeName(BodyInformNode.ChildNodes, "CurrentTime");
+            if (CurrentTimeNode != null)
+                xmlInform.CurrentTime = CurrentTimeNode.InnerText;
+
+            /*获取Event信息*/
+            XmlNodeList listEventNodes = null;
+            listEventNodes = Get_Node_By_NodeName(BodyInformNode.ChildNodes, "Event").ChildNodes;
+            if (listEventNodes != null)
+            {
+                int i = 0;
+                foreach (XmlNode node in listEventNodes)
+                {
+                    xmlInform.EventCode[i] = node.SelectSingleNode("EventCode").InnerText;
+                    i = i + 1;
+                }
+            }
+
+            XmlNodeList ParameterListNodes = null;
+            ParameterListNodes = Get_Node_By_NodeName(BodyInformNode.ChildNodes, "ParameterList").ChildNodes;
+            if (ParameterListNodes != null)
+            {
+                foreach (XmlNode node in ParameterListNodes)
+                {
+                    String strName=node.SelectSingleNode("Name").InnerText;
+                    if (String.Compare(strName,"InternetGatewayDevice.DeviceInfo.SerialNumber", true) == 0)
+                    {
+                        xmlInform.SN = node.SelectSingleNode("Value").InnerText;
+                    }
+                }
+            }
+
+            return xmlInform;
+
+        }
+
+        static private ParameterNode Get_Xml_Msg_GetParameterValuesResponse(XmlMethodStruct xmlStruct)
+        {
+            if (xmlStruct == null) return null;
+
+            if (String.Compare(xmlStruct.Method, "Cwmp:GetParameterValuesResponse", true) != 0) return null;
+
+            XmlNode BodyNode = xmlStruct.BodyNode;
+            if (BodyNode == null) return null;
+
+            XmlNode BodyInformNode = BodyNode.FirstChild;
+            if (BodyInformNode == null) return null;
+
+            ParameterNode parameterNode = new ParameterNode();
+
+            XmlNodeList listEventNodes = null;
+            listEventNodes = Get_Node_By_NodeName(BodyInformNode.ChildNodes, "ParameterList").ChildNodes;
+     
+            foreach (XmlNode node in listEventNodes)
+            {
+                XmlParameter xmlParameter = new XmlParameter();
+                xmlParameter.name = node.SelectSingleNode("Name").InnerText;
+                xmlParameter.value = node.SelectSingleNode("Value").InnerText;
+                xmlParameter.valueType = node.SelectSingleNode("Value").Attributes["xsi:type"].Value.Replace("xsd:", "");
+
+                parameterNode.InsertNodeToEnd(xmlParameter);
+            }
+
+            return parameterNode;
+
+        }
+
+        public XmlParameterStruct HandleRecvApMsg(String msg)
+        {
+            XmlParameterStruct parameterStruct = new XmlParameterStruct();
+
+            XmlMethodStruct xmlStruct = Get_Xml_Msg_Method(msg);
+
+            parameterStruct.Method = xmlStruct.Method;
+            if (String.Compare(xmlStruct.Method, "Cwmp:Inform", true) == 0)
+            {
+                parameterStruct.xmlInform = Get_Xml_Msg_Inform(xmlStruct);
+            }
+            else if (String.Compare(xmlStruct.Method, "Cwmp:GetParameterValuesResponse", true) == 0)
+            {
+                parameterStruct.parameterNode = Get_Xml_Msg_GetParameterValuesResponse(xmlStruct);
+            }
+            return parameterStruct;
+        }
+
+        public String XmlDecodeTest()
+        {
+            String str="";
+  
+            XmlMethodStruct xmlStruct = Get_Xml_Msg_Method(null);
+
+            //MessageBox.Show("Method:" + xmlStruct.Method);
+
+            if (String.Compare(xmlStruct.Method, "Cwmp:Inform", true) == 0)
+            {
+                XmlInform xmlInform = Get_Xml_Msg_Inform(xmlStruct);
+ 
+                str = str + xmlInform.OUI + "\r\n";
+                str = str + xmlInform.SN + "\r\n";
+                str = str + xmlInform.Imsi + "\r\n";
+                str = str + xmlInform.ProductClass + "\r\n";
+                str = str + xmlInform.Manufacturer + "\r\n";
+                str = str + xmlInform.CurrentTime + "\r\n";
+                foreach (String eventCode in xmlInform.EventCode)
+                {
+                    str = str + eventCode + "\r\n";
+                }
+            }
+            else if (String.Compare(xmlStruct.Method, "Cwmp:GetParameterValuesResponse", true) == 0)
+            {
+                ParameterNode parameterNode = Get_Xml_Msg_GetParameterValuesResponse(xmlStruct);
+
+                Node temp = parameterNode.head;
+                while (temp.next != null)
+                {
+                    str = str + temp.data.name + " " + temp.data.value + " " + temp.data.valueType + " " + "\r\n";
+                    temp = temp.next;
+                }
+            }
+            Log.WriteInfo("str");
+            return str;
+        }
+
+
+
+    }
+}

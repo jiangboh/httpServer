@@ -1,0 +1,65 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace httpServer
+{
+    enum TaskStatus   //任务状态
+    {
+        TaskNull = 0, //0:无该任务；
+        NoSendReqst = 1, //1:未下发请求；
+        SendReqst = 2, //2:已下发请示;
+        SendTask = 3, //3:已下发任务;
+        RecvReponse = 4,　　//4:已收到回应;
+        TimeOut = 5  //5：任务超时
+    }
+
+    enum TaskType   //任务类型
+    {
+        NullTask = 0, //0:无任务；
+        UpgradTask = 1, //1:升级任务；
+        GetLogTask = 2, //2:获取Log任务；
+        GetParameterValuesTask = 3, //3:获取参数值
+        SetParameterValuesTask = 4  //4：设置参数值
+    }
+
+    class ConnectUrlInfo
+    {
+        private String url;
+        private String name;
+        private String passwd;
+
+        public ConnectUrlInfo()
+        {
+            this.url = "";
+            this.name = "";
+            this.passwd = "";
+        }
+
+        public string Url { get => url; set => url = value; }
+        public string Name { get => name; set => name = value; }
+        public string Passwd { get => passwd; set => passwd = value; }
+    }
+
+    class GlobalParameter
+    {
+        static public bool httpServerRun = true;
+
+        static public String ThisIp = "192.168.88.101";   //本机IP
+        static public String HttpServerPath = "d://"; //http Server的根地址
+        static public String HttpServerName = "name"; //http Server的用户名
+        static public String HttpServerPasswd = "passwd"; //http Server的密码
+
+        static public String UploadServerUrl = "http://" + ThisIp +":123"; //Kpi
+        static public String UploadServerUser = "uploadKpiUser"; //Kpi
+        static public String UploadServerPasswd = "UploadKpiPassWd"; //Kpi
+
+        static public String Ntp1ServerPath = "192.168.88.101"; //Kpi
+        static public String Ntp2ServerPath = "192.168.88.101"; //Kpi
+
+        static public String ConnectionRequestUsername = "test";
+        static public String ConnectionRequestPassWd = "test";
+    }
+}

@@ -1,0 +1,250 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace httpServer
+{
+    public class ConnectUrlInfo
+    {
+        private String url;
+        private String name;
+        private String passwd;
+
+        public ConnectUrlInfo():this("","","")
+        {
+        }
+
+        public ConnectUrlInfo(String url,String name,String passwd)
+        {
+            this.url = url;
+            this.name = name;
+            this.passwd = passwd;
+        }
+
+        public string Url { get => url; set => url = value; }
+        public string Name { get => name; set => name = value; }
+        public string Passwd { get => passwd; set => passwd = value; }
+    }
+
+    public class ApConnHmsInfo
+    {
+        private String sn;
+        private DateTime time;
+        private String ip;
+        private int port;
+        private String[] eventCode;
+
+        public ApConnHmsInfo(String sn)
+        {
+            this.Sn = sn;
+            this.ip = "";
+            this.port = 0;
+            this.Time = DateTime.Now;
+            EventCode = new String[8];
+        }
+
+        public string Sn { get => sn; set => sn = value; }
+        public DateTime Time { get => time; set => time = value; }
+        public string Ip { get => ip; set => ip = value; }
+        public int Port { get => port; set => port = value; }
+        public string[] EventCode { get => eventCode; set => eventCode = value; }
+    }
+
+    public class ApConnHmsList
+    {
+        private static readonly object locker1 = new object();
+        private List<ApConnHmsInfo> connList;
+
+        public ApConnHmsList()
+        {
+            connList = new List<ApConnHmsInfo>();
+        }
+
+        public List<ApConnHmsInfo> GetConnList()
+        {
+            lock (locker1)
+            {
+                return connList;
+            }
+        }
+
+        public int GetCount()
+        {
+            lock (locker1)
+            {
+                return connList.Count;
+            }
+        }
+
+        public void add(ApConnHmsInfo connInfo)
+        {
+            lock (locker1)
+            {
+                foreach (ApConnHmsInfo x in connList)
+                {
+                    if (String.Compare(x.Sn, connInfo.Sn, true) == 0)
+                    {
+                        connList.Remove(x);
+                        break;
+                    }
+                }
+                connInfo.Time = DateTime.Now;
+                connList.Add(connInfo);
+            }
+        }
+
+        public void add(String sn)
+        {
+            lock (locker1)
+            {
+                foreach (ApConnHmsInfo x in connList)
+                {
+                    if (String.Compare(x.Sn, sn, true) == 0)
+                    {
+                        connList.Remove(x);
+                        break;
+                    }
+                }
+                ApConnHmsInfo connInfo = new ApConnHmsInfo(sn);
+                connList.Add(connInfo);
+            }
+        }
+
+        public void remov(String sn)
+        {
+            lock (locker1)
+            {
+                foreach (ApConnHmsInfo x in connList)
+                {
+                    if (String.Compare(x.Sn, sn, true) == 0)
+                    {
+                        connList.Remove(x);
+                        break;
+                    }
+                }
+            }
+        }
+
+        public void CheckConnHmsStatus()
+        {
+            DateTime tNow = new DateTime();
+            tNow = DateTime.Now;
+            lock (locker1)
+            {
+                int i = 0;
+                while (i < GetCount())
+                {
+                    //List<ApConnHmsInfo> connList = GetConnList();
+                    TimeSpan timeSpan = tNow - connList[i].Time;
+                    //如果前次上线时间距当前时间大于4分钟，表示Ap已下线。
+                    double diff = timeSpan.TotalMinutes;
+                    if (diff >= GlobalParameter.ConnHmsWaitTime)
+                    {
+                        GlobalParameter.myDB.SetconnHSToOffLine(connList[i].Sn);
+                        connList.RemoveAt(i);
+                    }
+                    else
+                    {
+                        i++;
+                    }
+                }
+            }
+        }
+
+        public ApConnHmsInfo getSnForconnList(String ip, int port)
+        {
+            foreach (ApConnHmsInfo x in connList)
+            {
+                if (String.Compare(x.Ip, ip, true) == 0 && x.Port == port)
+                {
+                    return x;
+                }
+            }
+            return null;
+        }
+
+    }
+
+
+    class MainFunction
+    {
+        public void RunTaskThread()
+        {
+            new Thread(new ThreadStart(delegate {
+                try
+                {
+                    RunNextTask();
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteCrash(ex);
+                    GlobalParameter.httpServerRun = false;
+                }
+            })).Start();
+        }
+
+        private void GetAllConnSN(List<String> snList)
+        {
+            foreach (String sn in snList)
+            {
+                GlobalParameter.apConnHmsList.add(sn);
+            }
+        }
+
+        public void RunNextTask()
+        {
+            GetAllConnSN(GlobalParameter.myDB.GetconnHSByDeviceInfo());
+
+            while (GlobalParameter.httpServerRun)
+            {
+                List<String> snList = GlobalParameter.myDB.GetAllNoSendReqstSnByApTask();
+                foreach(String sn in snList)
+                {
+                    String url = "";
+                    String us = "";
+                    String pwd="";
+                    if (GlobalParameter.myDB.GetUrlInfoBySn(ref url,ref us,ref pwd,sn))
+                    {
+                        //Log.WriteWarning("获取到的Url为空，不向该AP(" + sn + ")发送请求消息！");
+                    }
+                    else
+                    {
+                        ConnectUrlInfo urlInfo = new ConnectUrlInfo(url,us,pwd);
+                        HttpHandle.postUrl2Ap(urlInfo);
+                        GlobalParameter.myDB.SetApTaskStatusToReqstBySN(sn);
+                    }
+                }
+                Thread.Sleep(100);//休眠时间
+
+                //检查在线AP状态
+                GlobalParameter.apConnHmsList.CheckConnHmsStatus();
+
+                Thread.Sleep(100);//休眠时间
+            }
+        }
+
+        public XmlParameter[] cwmp_GetParameterValues(String[] ParameterName)
+        {
+            XmlParameter[] parmeterStruct = new XmlParameter[ParameterName.Length];
+
+
+            return parmeterStruct;
+        }
+
+        public void AddUpgradTaskToDatebase()
+        {
+            String[] nameList = new string[2];
+            nameList[0] = "SN";
+            nameList[1] = "IMSI";
+
+            String[] valueList = new string[2];
+            valueList[0] = "123456";
+            valueList[1] = "1789789";
+
+            //bool dd = db.insert(T_apConnInfo, nameList, valueList);
+        }
+    }
+}

@@ -1,0 +1,163 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
+
+namespace httpServer
+{
+    class DateBaseHandle
+    {
+        public MySqlConnection sqlCon;
+        static public int isSend = 0;
+        public DateBaseHandle(String ip,String datebase,String user,String passwd)
+        {
+            string M_str_sqlcon = "server=" + ip + ";User Id=" + user +";password="+passwd +";Database=" + datebase; //根据自己的设置
+            sqlCon = new MySqlConnection(M_str_sqlcon);
+        }
+
+        public DateBaseHandle() : this("172.17.8.130", "testDateBase", "root","root")
+        {
+        }
+
+        public void open()
+        {
+            sqlCon.Open();
+        }
+
+        public void close()
+        {
+            sqlCon.Close();
+        }
+
+        public bool insert(String tab,String[] name,String[] value)
+        {
+            if (name.Length == 0) return false;
+            if (name.Length != value.Length) return false;
+
+            String nameStr = name[0];
+            String valueStr = "'" + value[0] + "'";
+
+            for(int i=1; i<name.Length; i++)
+            {
+                nameStr = nameStr + "," + name[i];
+                valueStr = valueStr + "," + "'" + value[i] + "'";
+            }
+
+            MySqlCommand mycmd = new MySqlCommand("insert into " + tab + "(" + nameStr + ") values(" + valueStr +")", sqlCon);
+            if (mycmd.ExecuteNonQuery() > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        //
+        // 摘要:
+        //     从数据库获取是否有该ap的待发送任务。
+        //
+        // 参数:
+        //     sn:
+        //     要获取ap的sn号。
+        //
+        // 返回结果:
+        //     该任务的要下发的xml文件。
+        public byte[] GetTaskBySN(String sn)
+        {
+            //return System.Text.Encoding.ASCII.GetBytes("");
+
+            //以下为测试过程，实现时请删除
+            if (isSend == 1) return System.Text.Encoding.ASCII.GetBytes("");
+            isSend = 1;
+            String[] nameList = new string[2];
+            nameList[0] = "InternetGatewayDevice.DeviceInfo.AdditionalSoftwareVersion";
+            nameList[1] = "InternetGatewayDevice.Services.FAPService.1.CellConfig.LTE.RAN.Common.CellIdentity";
+            return XmlHandle.CreateGetParameterValuesXmlFile(nameList); 
+            
+        }
+
+        //
+        // 摘要:
+        //     将apTask表状态为 TaskStatus.NoSendReqst 的类型任务，修改为TaskStatus.SendReqst状态。
+        //
+        // 参数:
+        //     sn:
+        //     要修改ap的sn号。
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool SetApTaskStatusToReqstBySN(String sn)
+        {
+            return true;
+        }
+
+        //
+        // 摘要:
+        //     从apTask表中获取有状态为 TaskStatus.NoSendReqst 的所有sn号
+        //
+        // 参数:
+        //     
+        //
+        // 返回结果:
+        //     所有的SN集合。
+        public String[]  GetAllNoSendReqstSnByApTask()
+        {
+            String[] sn = new String[1];
+            sn[0]= "EN1800S116340039";
+            return sn;
+        }
+
+        //
+        // 摘要:
+        //     修改apTask表中的任务状态
+        //
+        // 参数:
+        //     sn:要修改ap的sn号。
+        //     type:要修改状态的任务类型
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool SetApTaskStatusBySN(String sn, TaskType type)
+        {
+            return true;
+        }
+
+        //
+        // 摘要:
+        //     向apTask表及tasktable表添加新任务（任务id根据任务类型及时间自动产生）
+        //
+        // 参数:
+        //     name:任务名称；
+        //     type:要修改状态的任务类型
+        //     xml:任务要下发的xml文件
+        //     sn:要修改ap的sn号。
+        //
+        // 返回结果:
+        //     修改成功返回true，失败返回false。
+        public bool AddTaskToTable(String name,TaskType type,String xml,String[] sn)
+        {
+            return true;
+        }
+
+        //
+        // 摘要:
+        //     从sn_imsi_table表查找AP反向连接信息
+        //
+        // 参数:
+        //     sn:要查找ap的sn号。
+        //
+        // 返回结果:
+        //     返回反向连接的url。
+        public ConnectUrlInfo GetUrlInfoBySn(String sn)
+        {
+            ConnectUrlInfo urlInfo = new ConnectUrlInfo();
+            urlInfo.Url = "http://192.168.88.108:8001";
+            urlInfo.Name = "test";
+            urlInfo.Passwd = "test";
+            return urlInfo;
+        }
+
+
+
+    }
+}
