@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using ICSharpCode.SharpZipLib.Checksum;
+using System.Runtime.CompilerServices;
+using ICSharpCode.SharpZipLib.Checksums;
 using ICSharpCode.SharpZipLib.Zip;
 
 namespace httpServer
@@ -62,7 +58,10 @@ namespace httpServer
             }
         }
 
-        public static void WriteCrash(Exception ex)
+        public static void WriteCrash(Exception ex,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
             //string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
             string filePath = LogFolder + "\\crash.log";
@@ -79,6 +78,7 @@ namespace httpServer
 
             System.IO.StreamWriter sw = System.IO.File.AppendText(filePath);
             sw.WriteLine("-----------------------------------------------");
+            sw.WriteLine("文件:" + Path.GetFileName(callFilePath) + ";行号：" + lineNumber);
             sw.WriteLine("Date:" + DateTime.Now.ToShortDateString() + "-" + DateTime.Now.ToLongTimeString());
             sw.WriteLine(ex.Message);
             sw.WriteLine(ex.StackTrace);
@@ -86,7 +86,10 @@ namespace httpServer
             sw.Close();
         }
 
-        private static void Write(String msg,bool addTimestamp)
+        private static void Write(String msg,bool addTimestamp,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
             //string log_folder = AppDomain.CurrentDomain.BaseDirectory + "Log";
             string filePath = LogFolder + "\\run.log";
@@ -108,7 +111,10 @@ namespace httpServer
 
                 String outStr = "";
                 if (addTimestamp)
-                    outStr = String.Format("[{0}-{1}] {2}", DateTime.Now.ToShortDateString(), DateTime.Now.ToLongTimeString(), msg);
+                    outStr = String.Format("[{0}-{1}]({2}:{3}) {4}", 
+                        DateTime.Now.ToShortDateString(), DateTime.Now.ToLongTimeString(),
+                        Path.GetFileName(callFilePath), lineNumber,
+                        msg);
                 else
                     outStr =  msg;
                 //MessageBox.Show(outStr);
@@ -137,16 +143,22 @@ namespace httpServer
         /// 向LOG文件写入调试级别打印，加时间戳
         /// </summary>
         /// <param name="message">写入的内容</param>
-        public static void WriteDebug(string message)
+        public static void WriteDebug(string message,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
-            WriteDebug(message,true);
+            WriteDebug(message,true,memberName,callFilePath,lineNumber);
         }
         /// <summary>
         /// 向LOG文件写入调试级别打印
         /// </summary>
         /// <param name="message">写入的内容</param>
         /// <param name="addTimestamp">true:加入时间戳；false:不加入时间戳</param>
-        public static void WriteDebug(string message ,bool addTimestamp)
+        public static void WriteDebug(string message ,bool addTimestamp,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
             if (logLevel > MyLogLevel.LOG_DEBUG)
             {
@@ -154,7 +166,7 @@ namespace httpServer
             }
             else
             {
-                Write("调试:" + message, addTimestamp);
+                Write("调试:" + message, addTimestamp, memberName, callFilePath, lineNumber);
             }
         }
 
@@ -162,16 +174,22 @@ namespace httpServer
         /// 向LOG文件写入正常级别打印，加时间戳
         /// </summary>
         /// <param name="message">写入的内容</param>
-        public static void WriteInfo(string message)
+        public static void WriteInfo(string message,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
-            WriteInfo(message, true);
+            WriteInfo(message, true, memberName, callFilePath, lineNumber);
         }
         /// <summary>
         /// 向LOG文件写入正常级别打印
         /// </summary>
         /// <param name="message">写入的内容</param>
         /// <param name="addTimestamp">true:加入时间戳；false:不加入时间戳</param>
-        public static void WriteInfo(string message, bool addTimestamp)
+        public static void WriteInfo(string message, bool addTimestamp,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
             if (logLevel > MyLogLevel.LOG_INFO)
             {
@@ -179,7 +197,7 @@ namespace httpServer
             }
             else
             {
-                Write(message, addTimestamp);
+                Write(message, addTimestamp, memberName, callFilePath, lineNumber);
             }
         }
 
@@ -187,16 +205,22 @@ namespace httpServer
         /// 向LOG文件写入警告级别打印，加时间戳
         /// </summary>
         /// <param name="message">写入的内容</param>
-        public static void WriteWarning(string message)
+        public static void WriteWarning(string message,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
-            WriteWarning(message, true);
+            WriteWarning(message, true, memberName, callFilePath, lineNumber);
         }
         /// <summary>
         /// 向LOG文件写入警告级别打印
         /// </summary>
         /// <param name="message">写入的内容</param>
         /// <param name="addTimestamp">true:加入时间戳；false:不加入时间戳</param>
-        public static void WriteWarning(string message, bool addTimestamp)
+        public static void WriteWarning(string message, bool addTimestamp,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
             if (logLevel > MyLogLevel.LOG_WARNING)
             {
@@ -204,7 +228,7 @@ namespace httpServer
             }
             else
             {
-                Write("警告:" + message, addTimestamp);
+                Write("警告:" + message, addTimestamp, memberName, callFilePath, lineNumber);
             }
         }
 
@@ -212,16 +236,22 @@ namespace httpServer
         /// 向LOG文件写入错误级别打印，加时间戳
         /// </summary>
         /// <param name="message">写入的内容</param>
-        public static void WriteError(string message)
+        public static void WriteError(string message,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
-            WriteError(message, true);
+            WriteError(message, true, memberName, callFilePath, lineNumber);
         }
         /// <summary>
         /// 向LOG文件写入错误级别打印
         /// </summary>
         /// <param name="message">写入的内容</param>
         /// <param name="addTimestamp">true:加入时间戳；false:不加入时间戳</param>
-        public static void WriteError(string message, bool addTimestamp)
+        public static void WriteError(string message, bool addTimestamp,
+                                [CallerMemberName] string memberName = "",
+                                [CallerFilePath] string callFilePath = "",
+                                [CallerLineNumber] int lineNumber = 0)
         {
             if (logLevel > MyLogLevel.LOG_ERROR)
             {
@@ -229,7 +259,7 @@ namespace httpServer
             }
             else
             {
-                Write("错误:" + message , addTimestamp);
+                Write("错误:" + message , addTimestamp, memberName, callFilePath, lineNumber);
             }
         }
     }

@@ -195,7 +195,7 @@ namespace httpServer
                 byte[] xml;
 
                 ApConnHmsInfo connInfo = GlobalParameter.apConnHmsList.getSnForconnList(ip, port);
-                if (connInfo != null)
+                if (connInfo == null)
                 {
                     xml = Encoding.UTF8.GetBytes(""); //回复空post
                 }
@@ -203,7 +203,20 @@ namespace httpServer
                 {
                     TaskType taskType= TaskType.TaskNull;
                     string taskId = "";
-                    xml = myDB.GetTaskBySN(ref taskType, ref taskId,connInfo.Sn);
+                    string upgradeTimer = "";
+                    xml = myDB.GetTaskBySN(ref taskType, ref taskId,ref upgradeTimer,connInfo.Sn);
+                    //定时升级任务
+                    if (taskType == TaskType.UpgradTask)
+                    {
+                        DateTime nowTime = DateTime.Now;
+                        DateTime runTime = Convert.ToDateTime(upgradeTimer);
+                        if (DateTime.Compare(nowTime, runTime) < 0)
+                        {
+                            Log.WriteError(string.Format("设备({0})升级任务[{1}]的字时间为{2}，目前未到时间。暂不升级。",
+                                connInfo.Sn,taskId,upgradeTimer));
+                            return Encoding.UTF8.GetBytes(""); //回复空post
+                        }
+                    }
                     if ((xml != null) && (taskType != TaskType.TaskNull) && !string.IsNullOrEmpty(taskId))
                     {
                         if(!myDB.SetApTaskStatusBySN(connInfo.Sn, taskType, TaskStatus.SendTask))
@@ -213,6 +226,10 @@ namespace httpServer
                             Log.WriteError(str);
                         }
                     }  
+                    else
+                    {
+                        xml = Encoding.UTF8.GetBytes(""); //回复空post
+                    }
                 }
 
                 return xml;
@@ -268,7 +285,22 @@ namespace httpServer
                         TaskType taskType = TaskType.TaskNull;
                         string taskId = "";
                         Log.WriteDebug("获取SN(" + connInfo.Sn + ")的任务。");
-                        xml = myDB.GetTaskBySN(ref taskType, ref taskId, connInfo.Sn);
+                        string upgradeTimer = "";
+                        xml = myDB.GetTaskBySN(ref taskType, ref taskId, ref upgradeTimer, connInfo.Sn);
+                        //定时升级任务
+                        if (taskType == TaskType.UpgradTask)
+                        {
+                            DateTime nowTime = DateTime.Now;
+                            DateTime runTime = Convert.ToDateTime(upgradeTimer);
+                            if (DateTime.Compare(nowTime, runTime) < 0)
+                            {
+                                Log.WriteError(string.Format("设备({0})升级任务[{1}]的字时间为{2}，目前未到时间。暂不升级。",
+                                    connInfo.Sn, taskId, upgradeTimer));
+                                return Encoding.UTF8.GetBytes(""); //回复空post
+                            }
+
+                        }
+
                         if ((xml != null) && (taskType != TaskType.TaskNull) && (false == string.IsNullOrEmpty(taskId)))
                         {
                             if (!myDB.SetApTaskStatusBySN(connInfo.Sn, taskType, TaskStatus.SendTask))
@@ -326,12 +358,13 @@ namespace httpServer
                         continue;
                     }
 
-                    Log.WriteDebug("保存获取到的参数到临时表!!");
+                    Log.WriteDebug(string.Format("保存{0}={1}获取到的参数到临时表!!", x.name, x.value));
 
                     int errCode = myDB.tmpvalue_record_entity_insert(sn,id,x.name ,x.value,x.valueType);
                     if (0 != errCode)
                     {
-                        Log.WriteError("更新AP状态或参数修改出错。出错码：" + errCode);
+                        Log.WriteError(string.Format("更新AP状态或参数修改出错，出错原因:({0}){1}。"
+                                        , errCode, myDB.get_rtv_str(errCode)));
                     }
                 }
             }
@@ -349,7 +382,7 @@ namespace httpServer
                     //sctp告警
                     if (String.Compare(structAlarm[i].AlarmIdentifier, "84", true) == 0)
                     {
-                        structDeviceInfo deviceInfo = new structDeviceInfo();
+                        strDevice deviceInfo = new strDevice();
                         if (String.Compare(structAlarm[i].NotificationType, "NewAlarm", true) == 0)
                         {
                             deviceInfo.s1Status = "offline";
@@ -362,7 +395,33 @@ namespace httpServer
                         int errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
                         if (0 != errCode)
                         {
-                            Log.WriteError("更新AP S1状态出错。出错码：" + errCode);
+                            Log.WriteError(string.Format("更新AP S1 状态出错，出错原因:({0}){1}。"
+                                        , errCode, myDB.get_rtv_str(errCode)));
+                        }
+                    }
+
+                    //保存告警到数据库
+                    if (!String.IsNullOrEmpty(structAlarm[i].AlarmIdentifier))
+                    {
+                        strAlarm sAlarm = new strAlarm
+                        {
+                            sn = sn,
+                            vendor = "Bravo",
+                            flag = structAlarm[i].AlarmIdentifier,
+                            level = structAlarm[i].PerceivedSeverity,
+                            noticeType = structAlarm[i].NotificationType.Equals("NewAlarm") ? "NewAlarm" : "ClearAlarm",
+                            cause = structAlarm[i].ProbableCause,
+                            des = structAlarm[i].SpecificProblem,
+                            addDes = structAlarm[i].AdditionalText,
+                            addInfo = structAlarm[i].AdditionalInformation
+                            //time = structAlarm[i].EventTime
+                        };
+
+                        string str="";
+                        int re = myDB.alarminfo_record_create(sn, sAlarm,ref str);
+                        if (re != 0)
+                        {
+                            Log.WriteError("保存AP告警信息出错。出错原因(" + re + ")" + str);
                         }
                     }
                 }
@@ -452,7 +511,7 @@ namespace httpServer
             /// <param name="valueChangeNode">AP传过来的参数值表</param>
             private void CheckParameterList(String sn,List<XmlParameter> valueChangeNode)
             {
-                structDeviceInfo deviceInfo = new structDeviceInfo();
+                strDevice deviceInfo = new strDevice();
                 Boolean isChange = false;
        
                 foreach (XmlParameter x in valueChangeNode)
@@ -516,7 +575,8 @@ namespace httpServer
                         errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
                         if (0 != errCode)
                         {
-                            Log.WriteError(str + "出错。出错码：" + errCode);
+                            Log.WriteError(string.Format("更新AP状态或参数出错，出错原因:({0}){1}。"
+                                        , errCode, myDB.get_rtv_str(errCode)));
                         }
                     }
                     catch (Exception e)
@@ -621,9 +681,13 @@ namespace httpServer
                         System.IO.StreamReader reader = new System.IO.StreamReader(stream, Encoding.UTF8);
                         //String body = reader.ReadToEnd();
                         XmlParameterStruct parameterStruct = new XmlParameterStruct();
-                        parameterStruct = new XmlHandle().HandleRecvApMsg(reader.ReadToEnd());
 
-                        Log.WriteDebug("收到POST消息，消息Method="+ parameterStruct.Method + "!");
+                        string msg = reader.ReadToEnd();
+                        Log.WriteDebug("收到AP消息。消息内容:\n" + msg);
+                        parameterStruct = new XmlHandle().HandleRecvApMsg(msg);
+
+                        Log.WriteDebug(string.Format("收到[{0}]POST消息，消息Method={1}!",
+                           parameterStruct.xmlInform.SN, parameterStruct.Method));
 
                         if (request.Cookies.Count > 0)
                         {
@@ -651,6 +715,20 @@ namespace httpServer
                             connInfo.EventCode = parameterStruct.xmlInform.EventCode;
 
                             Log.WriteDebug("收到Inform消息，SN = " + connInfo.Sn);
+                            if (!string.IsNullOrEmpty(connInfo.Sn))
+                            {
+                                if (myDB.deviceinfo_record_exist(connInfo.Sn) != 1)
+                                {
+                                    Log.WriteError(string.Format("设备({0})未开户，不回复消息。", connInfo.Sn));
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                Log.WriteError("未读到设备SN号。");
+                                return;
+                            }
+
                             foreach (string eventcode in connInfo.EventCode)
                             {
                                 if (string.IsNullOrEmpty(eventcode)) break;
@@ -664,6 +742,14 @@ namespace httpServer
                             }
                             if (XmlHandle.GetEventInList(connInfo.EventCode, InformEventCode.BOOT))
                             {
+                                Log.WriteDebug("设置AP(" + parameterStruct.xmlInform.SN + ")的告警为历史告警。" );
+                                int ret = myDB.alarminfo_record_set_2_history(parameterStruct.xmlInform.SN);
+                                if (ret != 0)
+                                {
+                                    Log.WriteError(string.Format("更新AP的告警为历史告警出错，出错原因:({0}){1}。"
+                                        , ret ,myDB.get_rtv_str(ret)));
+                                }
+
                                 Log.WriteDebug("更新AP(" + parameterStruct.xmlInform.SN +
                                     ")反向连接地址为:" + parameterStruct.xmlInform.ConnectionRequestURL);
                                 int re = myDB.apconninfo_record_update(parameterStruct.xmlInform.SN,
@@ -672,7 +758,20 @@ namespace httpServer
                                     GlobalParameter.ConnectionRequestPassWd);
                                 if (re != 0)
                                 {
-                                    Log.WriteError("更新AP反向连接地址出错，出错码：" + re);
+                                    Log.WriteError(string.Format("更新AP反向连接地址出错，出错原因:({0}){1}。"
+                                        , ret, myDB.get_rtv_str(ret)));
+                                }
+
+                                Log.WriteDebug("更新AP(" + parameterStruct.xmlInform.SN +
+                                    ")的IP地址为:" + connInfo.Ip);
+                                strDevice deviceInfo = new strDevice();
+                                deviceInfo.ipAddr = connInfo.Ip;
+                               
+                                int errCode = myDB.deviceinfo_record_update(parameterStruct.xmlInform.SN, deviceInfo);
+                                if (0 != errCode)
+                                {
+                                    Log.WriteError(string.Format("更新AP的IP地址出错，出错原因:({0}){1}。"
+                                                , errCode, myDB.get_rtv_str(errCode)));
                                 }
                             }
                             if (XmlHandle.GetEventInList(connInfo.EventCode, InformEventCode.M_Reboot))
@@ -703,6 +802,20 @@ namespace httpServer
                             ApConnHmsInfo connInfo = GlobalParameter.apConnHmsList.getSnForconnList(ip, port);
                             if (connInfo != null)
                             {
+                                if (!string.IsNullOrEmpty(connInfo.Sn))
+                                {
+                                    if (myDB.deviceinfo_record_exist(connInfo.Sn) != 1)
+                                    {
+                                        Log.WriteError(string.Format("设备({0})未开户，不回复消息。", connInfo.Sn));
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    Log.WriteError("未读到设备SN号。");
+                                    return;
+                                }
+
                                 if (String.Compare(parameterStruct.Method, RPCMethod.GetParameterValuesResponse, true) == 0)
                                 {
                                     //去掉周期性查询
@@ -734,6 +847,17 @@ namespace httpServer
                                             TaskStatus.ReponseOk))
                                         {
                                             Log.WriteError(str);
+                                        }
+
+                                        //周期日志上传回复，保存Key
+                                        string taskType = parameterStruct.ID.Substring(0, TaskType.GetLogTask.ToString().Length);
+                                        if (taskType.Equals(TaskType.GetLogTask.ToString()))
+                                        {                           
+                                            if (GlobalParameter.AutonomousTransferKey.ContainsKey(connInfo.Sn))
+                                            {
+                                                GlobalParameter.AutonomousTransferKey.Remove(connInfo.Sn);
+                                            }
+                                            GlobalParameter.AutonomousTransferKey.Add(connInfo.Sn, parameterStruct.ID);
                                         }
                                     }
                                 }
@@ -773,6 +897,64 @@ namespace httpServer
                                     byte[] res = XmlHandle.CreateTransferCompleteResponseXmlFile();// Encoding.UTF8.GetBytes("OK");
                                     response.OutputStream.Write(res, 0, res.Length);
                                     Log.WriteDebug("收到TransferComplete消息，回复消息：\n" + System.Text.Encoding.Default.GetString(res));
+                                    return;
+                                }
+                                else if (String.Compare(parameterStruct.Method, RPCMethod.AutonomousTransferComplete, true) == 0)
+                                {
+                                    string CommandKey = "";
+                                    if (String.IsNullOrEmpty(parameterStruct.autoTransferComplete.CommandKey))
+                                    {
+                                        if (GlobalParameter.AutonomousTransferKey.ContainsKey(connInfo.Sn))
+                                            CommandKey = GlobalParameter.AutonomousTransferKey[connInfo.Sn];
+                                    }
+                                 
+                                    if (!string.IsNullOrEmpty(CommandKey) &&
+                                        parameterStruct.autoTransferComplete.FaultCode == 0)  //AP返回成功
+                                    {
+                                        //设置LOG上传成功标志
+                                        string taskType = CommandKey.Substring(0, TaskType.GetLogTask.ToString().Length);
+                                        if (taskType.Equals(TaskType.GetLogTask.ToString()))
+                                        {
+                                            int ret = 0;
+                                            string tmpstr = String.Format("修改SN({0}),任务ID({1}),AP LOG表状态为可用！",
+                                                connInfo.Sn, CommandKey);
+                                            Log.WriteDebug(tmpstr);
+
+                                            //周期上传时，只保存最后一次的log
+                                            if (1== myDB.aploginfo_record_exist(connInfo.Sn, CommandKey))
+                                            {
+                                                ret = myDB.aploginfo_record_delete(connInfo.Sn, CommandKey);
+                                                if (0 != ret)
+                                                {
+                                                    Log.WriteError(tmpstr + "出错。无法删除已有记录。错误原因：" + myDB.get_rtv_str(ret));
+                                                }
+                                            }
+
+                                            if (ret == 0)
+                                            {
+                                                ret = myDB.aploginfo_record_insert(
+                                                    connInfo.Sn, CommandKey, DateTime.Now.ToString(),
+                                                    parameterStruct.autoTransferComplete.TargetFileName,
+                                                    Convert.ToUInt32(parameterStruct.autoTransferComplete.FileSize), "None");
+                                                if (0 != ret)
+                                                {
+                                                    Log.WriteError(tmpstr + "出错。错误原因：" + myDB.get_rtv_str(ret));
+                                                }
+                                                else
+                                                {
+                                                    ret = myDB.aploginfo_record_update(connInfo.Sn, CommandKey, 1);
+                                                    if (0 != ret)
+                                                    {
+                                                        Log.WriteError(tmpstr + "出错。错误原因：" + myDB.get_rtv_str(ret));
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                                                       
+                                    byte[] res = XmlHandle.CreateAutonomousTransferCompleteResponseXmlFile();// Encoding.UTF8.GetBytes("OK");
+                                    response.OutputStream.Write(res, 0, res.Length);
+                                    Log.WriteDebug("收到AutonomousTransferComplete消息，回复消息：\n" + System.Text.Encoding.Default.GetString(res));
                                     return;
                                 }
                                 else if (String.Compare(parameterStruct.Method, RPCMethod.RebootResponse, true) == 0)

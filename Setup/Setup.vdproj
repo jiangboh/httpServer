@@ -21,12 +21,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_01E8F55906347016E5A2AB110DDDC30B"
-        "OwnerKey" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_0290B001E24ACF6B751D73364FA76F3C"
         "OwnerKey" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
         "MsmSig" = "8:_UNDEFINED"
@@ -88,6 +82,18 @@
         "Entry"
         {
         "MsmKey" = "8:_182042006C4DB105C788D61034967852"
+        "OwnerKey" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D8E405DFFD7C0D7631447241A5F1F42"
         "OwnerKey" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -460,7 +466,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_01E8F55906347016E5A2AB110DDDC30B"
+        "OwnerKey" = "8:_1D8E405DFFD7C0D7631447241A5F1F42"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -781,6 +793,18 @@
         "OwnerKey" = "8:_34EEADFDED693D561C1AF2FA090A9D9E"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -806,6 +830,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -845,6 +877,62 @@
     {
         "CustomAction"
         {
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_0848356078154AF3B206395A4030C9A4"
+            {
+            "Name" = "8:主输出 from httpServerService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+            "FileType" = "3:2"
+            "InstallAction" = "3:1"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_E35B88BF_00E9_4934_AB7C_2697E2AB013A"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_1BD000FC6F534605A7977C28F6AA3D57"
+            {
+            "Name" = "8:主输出 from httpServerService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+            "FileType" = "3:2"
+            "InstallAction" = "3:3"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_454BCDA8_DBF3_49F7_ABA2_C79F5BBDAAC0"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_239364EB883A467C88FE4B70BF506CA5"
+            {
+            "Name" = "8:主输出 from httpServerService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+            "FileType" = "3:2"
+            "InstallAction" = "3:2"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_9CA1E24C_2A62_4C57_8E88_40EDAA41A60B"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_D63BED4E13CD450287EC60F52774C782"
+            {
+            "Name" = "8:主输出 from httpServerService (Active)"
+            "Condition" = "8:"
+            "Object" = "8:_1A96D7844C15457D86855FDC7E365AB4"
+            "FileType" = "3:2"
+            "InstallAction" = "3:4"
+            "Arguments" = "8:"
+            "EntryPoint" = "8:"
+            "Sequence" = "3:1"
+            "Identifier" = "8:_A294C949_5B55_4869_961E_22BF8E7F3D74"
+            "InstallerClass" = "11:TRUE"
+            "CustomActionData" = "8:"
+            }
         }
         "DefaultFeature"
         {
@@ -882,37 +970,6 @@
                     }
                 }
             "SourcePath" = "8:System.Diagnostics.Contracts.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_438F4525B713439D93949988CED61B26"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_01E8F55906347016E5A2AB110DDDC30B"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_01E8F55906347016E5A2AB110DDDC30B"
-                    {
-                    "Name" = "8:System.Net.Http.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_438F4525B713439D93949988CED61B26"
@@ -1192,6 +1249,37 @@
                     }
                 }
             "SourcePath" = "8:System.Reflection.Emit.ILGeneration.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_438F4525B713439D93949988CED61B26"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1D8E405DFFD7C0D7631447241A5F1F42"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_1D8E405DFFD7C0D7631447241A5F1F42"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_438F4525B713439D93949988CED61B26"
@@ -2754,7 +2842,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HttpServer"
         "ProductCode" = "8:{D4836768-5D27-4C5F-B44F-CA6034A8575D}"
-        "PackageCode" = "8:{C4E96869-E714-491C-BB14-8FF52C4B9366}"
+        "PackageCode" = "8:{A957DF9A-8E73-4E14-B721-4C23AB3B7EEC}"
         "UpgradeCode" = "8:{C49E2FB4-F24C-478E-A4B8-EB3FF7B13BC4}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2874,34 +2962,6 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2CCCA560DB234F0E993B2CCEB0D7A034"
-            {
-            "Name" = "8:Shortcut to 主输出 from httpServer (Active)"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
-            "Folder" = "8:_54B42ED7B2684B6182EF358B23EA540A"
-            "WorkingFolder" = "8:_438F4525B713439D93949988CED61B26"
-            "Icon" = "8:"
-            "Feature" = "8:"
-            }
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_850C7B9409CE4A3CBF0B61FC91ADDAE6"
-            {
-            "Name" = "8:httpServer"
-            "Arguments" = "8:"
-            "Description" = "8:"
-            "ShowCmd" = "3:1"
-            "IconIndex" = "3:0"
-            "Transitive" = "11:FALSE"
-            "Target" = "8:_4382F7958EA94AEEA1D8DC944E595B2B"
-            "Folder" = "8:_A216B1624C7048848F1B658F1A8B3901"
-            "WorkingFolder" = "8:_438F4525B713439D93949988CED61B26"
-            "Icon" = "8:_5AB0F5660B0B4FE78F57945C268558B7"
-            "Feature" = "8:"
-            }
         }
         "UserInterface"
         {
@@ -3301,9 +3361,37 @@
         }
         "ProjectOutput"
         {
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_1A96D7844C15457D86855FDC7E365AB4"
+            {
+            "SourcePath" = "8:..\\Service\\obj\\Debug\\httpServerService.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_438F4525B713439D93949988CED61B26"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{A8078C45-9D4C-466F-9F4B-0D08DE2FEC3B}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4382F7958EA94AEEA1D8DC944E595B2B"
             {
-            "SourcePath" = "8:..\\httpServer\\obj\\Release\\HttpServer.exe"
+            "SourcePath" = "8:..\\httpServer\\obj\\Debug\\HttpServer.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_438F4525B713439D93949988CED61B26"

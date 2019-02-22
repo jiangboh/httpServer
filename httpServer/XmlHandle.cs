@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml;
@@ -133,6 +134,17 @@ namespace httpServer
         public String CompleteTime;
     }
 
+    class XmlAutonomousTransferComplete
+    {
+        public String CommandKey;
+        public int FaultCode;  //0：成功；other：失败
+        public String FaultString;
+        public String StartTime;
+        public String CompleteTime;
+        public String TargetFileName;
+        public String FileSize;
+    }
+
     class XmlFault
     {
         public int FaultCode;  //0：成功；other：失败
@@ -146,6 +158,7 @@ namespace httpServer
         public XmlInform xmlInform;
         public List<XmlParameter> parameterNode;
         public XmlTransferComplete transferComplete;
+        public XmlAutonomousTransferComplete autoTransferComplete;
         public XmlFault xmlFalut;
 
         public XmlParameterStruct()
@@ -153,6 +166,7 @@ namespace httpServer
             xmlInform = new XmlInform();
             parameterNode = new List<XmlParameter>();
             transferComplete = new XmlTransferComplete();
+            autoTransferComplete = new XmlAutonomousTransferComplete();
             xmlFalut = new XmlFault();
         }
     }
@@ -249,6 +263,10 @@ namespace httpServer
             else if (String.Compare(xmlStruct.Method, RPCMethod.TransferComplete, true) == 0)
             {
                 parameterStruct.transferComplete = Get_Xml_Msg_TransferComplete(xmlStruct);
+            }
+            else if (String.Compare(xmlStruct.Method, RPCMethod.AutonomousTransferComplete, true) == 0)
+            {
+                parameterStruct.autoTransferComplete = Get_Xml_Msg_AutonomousTransferComplete(xmlStruct);
             }
             else if (String.Compare(xmlStruct.Method, RPCMethod.Fault, true) == 0)
             {
@@ -478,6 +496,52 @@ namespace httpServer
             return transferComplete;
         }
 
+        static private XmlAutonomousTransferComplete Get_Xml_Msg_AutonomousTransferComplete(XmlMethodStruct xmlStruct)
+        {
+            if (xmlStruct == null) return null;
+
+            if (String.Compare(xmlStruct.Method, RPCMethod.AutonomousTransferComplete, true) != 0) return null;
+
+            XmlNode BodyNode = xmlStruct.BodyNode;
+            if (BodyNode == null) return null;
+
+            XmlNode BodyInformNode = BodyNode.FirstChild;
+            if (BodyInformNode == null) return null;
+
+            XmlAutonomousTransferComplete transferComplete = new XmlAutonomousTransferComplete();
+
+            XmlNode tempNode = null;
+            tempNode = BodyInformNode.SelectSingleNode("CommandKey");
+            if (tempNode != null)
+                transferComplete.CommandKey = tempNode.InnerText;
+
+            tempNode = BodyInformNode.SelectSingleNode("StartTime");
+            if (tempNode != null)
+                transferComplete.StartTime = tempNode.InnerText;
+
+            tempNode = BodyInformNode.SelectSingleNode("CompleteTime");
+            if (tempNode != null)
+                transferComplete.CompleteTime = tempNode.InnerText;
+
+            tempNode = BodyInformNode.SelectSingleNode("TargetFileName");
+            if (tempNode != null)
+                transferComplete.TargetFileName = tempNode.InnerText;
+
+            tempNode = BodyInformNode.SelectSingleNode("FileSize");
+            if (tempNode != null)
+                transferComplete.FileSize = tempNode.InnerText;
+
+            tempNode = BodyInformNode.SelectSingleNode("FaultStruct/FaultCode");
+            if (tempNode != null)
+                transferComplete.FaultCode = Convert.ToInt32(tempNode.InnerText);
+
+            tempNode = BodyInformNode.SelectSingleNode("FaultStruct/FaultString");
+            if (tempNode != null)
+                transferComplete.FaultString = tempNode.InnerText;
+
+            return transferComplete;
+        }
+
         static private XmlFault Get_Xml_Msg_Fault(XmlMethodStruct xmlStruct)
         {
             if (xmlStruct == null) return null;
@@ -631,23 +695,61 @@ namespace httpServer
             return data;
         }
 
+        static public byte[] CreateAutonomousTransferCompleteResponseXmlFile()
+        {
+
+            byte[] data;
+            try
+            {
+                XmlDocument myXmlDoc = CreateRootNode("inform");
+                if (myXmlDoc == null) return Encoding.UTF8.GetBytes("");
+
+                XmlElement rootElement = myXmlDoc.DocumentElement;
+
+                XmlElement levelElement2 = myXmlDoc.CreateElement("SOAP-ENV:Body", XMLNS_SOAPENV);
+                rootElement.AppendChild(levelElement2);
+
+                XmlElement levelElement21 = myXmlDoc.CreateElement("cwmp", RPCMethod.AutonomousTransferCompleteResponse, XMLNS_CWMP);
+                levelElement2.AppendChild(levelElement21);
+                //XmlElement levelElement211 = myXmlDoc.CreateElement("MaxEnvelopes");
+                //levelElement211.InnerText = "1";
+                //levelElement21.AppendChild(levelElement211);
+
+                //将xml文件保存到指定的路径下
+                //myXmlDoc.Save("d://data2.xml");
+
+                MemoryStream ms = new MemoryStream();
+                myXmlDoc.Save(ms);
+                data = ms.ToArray();
+
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex.ToString());
+                String err = ex.ToString();
+                data = Encoding.UTF8.GetBytes("");
+            }
+            return data;
+        }
+
         static public byte[] Create_1BOOT_InformResponse(List<XmlParameter> inList)
         {
             byte[] data;
 
             String Id = SetParameterValueFor1Boot;
             List<XmlParameter> parameterList = new List<XmlParameter>(inList);
-            //XmlParameter xmlParameter1 = new XmlParameter("FAP.PerfMgmt.Config.1.Enable", "1");
-            //parameterList.Add(xmlParameter1);
-            //XmlParameter xmlParameter2 = new XmlParameter("FAP.PerfMgmt.Config.1.URL", GlobalParameter.UploadServerUrl);
-            //parameterList.Add(xmlParameter2);
-            //XmlParameter xmlParameter3 = new XmlParameter("FAP.PerfMgmt.Config.1.Username", GlobalParameter.UploadServerUser);
-            //parameterList.Add(xmlParameter3);
-            //XmlParameter xmlParameter4 = new XmlParameter("FAP.PerfMgmt.Config.1.Password", GlobalParameter.UploadServerPasswd);
-            //parameterList.Add(xmlParameter4);
-
-            //XmlParameter xmlParameter5 = new XmlParameter("FAP.PerfMgmt.Config.1.PeriodicUploadInterval", "900");
-            //parameterList.Add(xmlParameter5);
+            //KPI上传设置
+            XmlParameter xmlParameter1 = new XmlParameter("FAP.PerfMgmt.Config.1.Enable", "1");
+            parameterList.Add(xmlParameter1);
+            XmlParameter xmlParameter2 = new XmlParameter("FAP.PerfMgmt.Config.1.URL", GlobalParameter.UploadServerUrl + "/kpi/");
+            parameterList.Add(xmlParameter2);
+            XmlParameter xmlParameter3 = new XmlParameter("FAP.PerfMgmt.Config.1.Username", GlobalParameter.UploadServerUser);
+            parameterList.Add(xmlParameter3);
+            XmlParameter xmlParameter4 = new XmlParameter("FAP.PerfMgmt.Config.1.Password", GlobalParameter.UploadServerPasswd);
+            parameterList.Add(xmlParameter4);
+            XmlParameter xmlParameter5 = new XmlParameter("FAP.PerfMgmt.Config.1.PeriodicUploadInterval", "900");
+            parameterList.Add(xmlParameter5);
+            //周期心跳设置
             XmlParameter xmlParameter6 = new XmlParameter("ManagementServer.PeriodicInformEnable", "1");
             parameterList.Add(xmlParameter6);
             XmlParameter xmlParameter7 = new XmlParameter("ManagementServer.PeriodicInformInterval", "60");
@@ -656,6 +758,7 @@ namespace httpServer
             parameterList.Add(xmlParameter8);
             XmlParameter xmlParameter9 = new XmlParameter("ManagementServer.ConnectionRequestPassword", GlobalParameter.ConnectionRequestPassWd);
             parameterList.Add(xmlParameter9);
+            //NTP服务器设置
             XmlParameter xmlParameter10 = new XmlParameter("Time.NTPServer1", GlobalParameter.Ntp1ServerPath);
             parameterList.Add(xmlParameter10);
             XmlParameter xmlParameter11 = new XmlParameter("Time.NTPServer2", GlobalParameter.Ntp2ServerPath);
@@ -768,7 +871,7 @@ namespace httpServer
                 }
                 else
                 {
-                    url = url = url + "/log/" + FileName;
+                    url = url + "/log/" + FileName;
                 }
                 XmlDocument myXmlDoc = CreateRootNode(id);
                 if (myXmlDoc == null)
@@ -831,6 +934,34 @@ namespace httpServer
                 data = Encoding.UTF8.GetBytes("");
             }
             return data;
+        }
+
+        /// <summary>
+        /// 创建周期上传Log任务
+        /// </summary>
+        /// <param name="id">任务id</param>
+        /// <param name="enable">1：打开周期上传；0：关闭周期上传</param>
+        /// <param name="UploadInterval">日志周期上传时间间隔，单位（秒）</param>
+        /// <returns></returns>
+        static public byte[] CreatePeriodicUploadXmlFile(String id,int enable,int UploadInterval)
+        {
+            String url = GlobalParameter.UploadServerUrl;
+            if (url.Substring(url.Length - 1).Equals("/"))
+            {
+                url = url + "log/";
+            }
+            else
+            {
+                url = url + "/log/";
+            }
+            List<XmlParameter> parameterList = new List<XmlParameter>();
+            parameterList.Add(new XmlParameter("LogMgmt.PeriodicUploadEnable",enable.ToString()));
+            parameterList.Add(new XmlParameter("LogMgmt.PeriodicUploadInterval", UploadInterval.ToString()));
+            parameterList.Add(new XmlParameter("LogMgmt.URL", url));
+            parameterList.Add(new XmlParameter("LogMgmt.Username", GlobalParameter.UploadServerUser));
+            parameterList.Add(new XmlParameter("LogMgmt.Password", GlobalParameter.UploadServerPasswd));
+
+            return CreateSetParameterValuesXmlFile(id,parameterList);
         }
 
         static public byte[] CreateGetParameterValuesXmlFile(String id, String[] ParameterName)
@@ -1041,6 +1172,315 @@ namespace httpServer
 
         #endregion
 
+        #region 将Kpi的XML文件存库
+        static public string GetErrorCode (int code)
+        {
+            if (code == -1)
+            {
+                return "文件不存在";
+            }
+            else if (code == -2)
+            {
+                return "XML文档格式错误";
+            }
+            else if (code == -3)
+            {
+                return "文件名格式错误";
+            }
+            else if (code == -4)
+            {
+                return "无法获取根节点";
+            }
+            else 
+            {
+                return "未知原因";
+            }
+        }
 
-    }
+        /// <summary>
+        /// 将Kpi的XML文件存库
+        /// </summary>
+        /// <param name="fileName">Kpi文件名称</param>
+        /// <returns>0：成功；-1：文件不存在；-2：XML文档格式错误;-3:文件名格式错误</returns>
+        static public int GetKpiFile2Db(FileInfo fileInfo,ref String sn,ref strPerformance kpi)
+        {
+            try
+            { 
+                XmlDocument xmlDoc = new XmlDocument();
+     
+                if (!string.IsNullOrEmpty(fileInfo.FullName))
+                    xmlDoc.Load(fileInfo.FullName);
+                else
+                    return -1;
+
+                var root = xmlDoc.DocumentElement;//取到根结点
+                if (root == null) return -2;
+
+                XmlNodeList listNodes = null;
+                listNodes = root.ChildNodes;
+                if (listNodes == null) return -2;
+
+                XmlNode MeasDataNode = Get_Node_By_NodeName(listNodes, "measData");
+                if (MeasDataNode == null) return -2;
+
+                XmlNode MeasInfoNode = Get_Node_By_NodeName(MeasDataNode.ChildNodes, "measInfo");
+                if (MeasInfoNode == null) return -2;
+
+                XmlNode MeasValueNode = Get_Node_By_NodeName(MeasInfoNode.ChildNodes, "measValue");
+                if (MeasValueNode == null) return -2;
+                XmlNodeList MeasValueNodeList = null;
+                MeasValueNodeList = MeasValueNode.ChildNodes;
+                if (MeasValueNodeList == null) return -2;
+
+                XmlNodeList MeasTypeNodeList = null;
+                MeasTypeNodeList = MeasInfoNode.ChildNodes;
+                if (MeasTypeNodeList == null) return -2;
+
+                Regex r = new Regex(
+                    @"^A(?<data>\d+)\.(?<sTime>\d+)\+(?<sZone>\d+)-(?<eTime>\d+)\+(?<eZone>\d+)_(?<oui>\S+)\.(?<sn>\S+)\.xml"
+                    , RegexOptions.Compiled);
+                Match m = r.Match(fileInfo.Name);
+                if (!m.Success) return -3;
+                sn = m.Result("${sn}"); 
+
+                string data = m.Result("${data}");
+                string sTime = m.Result("${sTime}");
+                string eTime = m.Result("${eTime}");
+                kpi.timeStart = data.Substring(0, 4) + "-" + data.Substring(4, 2) + "-" + data.Substring(6, 2)
+                    + " " + sTime.Substring(0, 2) + ":" + sTime.Substring(2, 2) + ":00";
+                kpi.timeEnded = data.Substring(0, 4) + "-" + data.Substring(4, 2) + "-" + data.Substring(6, 2)
+                    + " " + eTime.Substring(0, 2) + ":" + eTime.Substring(2, 2) + ":00";
+                if (0 >= DateTime.Compare(Convert.ToDateTime(kpi.timeEnded), Convert.ToDateTime(kpi.timeStart)))
+                {
+                    kpi.timeStart = Convert.ToDateTime(kpi.timeStart).ToString();
+                    kpi.timeEnded = Convert.ToDateTime(kpi.timeEnded).AddDays(1).ToString();
+                }
+                else
+                {
+                    kpi.timeStart = Convert.ToDateTime(kpi.timeStart).ToString();
+                    kpi.timeEnded = Convert.ToDateTime(kpi.timeEnded).ToString();
+                }
+
+                foreach (XmlNode node in MeasTypeNodeList)
+                {
+                    if (node.InnerText.Equals("RRC.ConnMax"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.RRC_ConnMax = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("RRC.SuccConnEstab"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.RRC_SuccConnEstab = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("RRC.AttConnEstab"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.RRC_AttConnEstab = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("ERAB.NbrSuccEstab"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.ERAB_NbrSuccEstab = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("ERAB.NbrAttEstab"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.ERAB_NbrAttEstab = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("ERAB.NbrSuccEstab.1"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.ERAB_NbrSuccEstab_1 = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("ERAB.NbrAttEstab.1"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.ERAB_NbrAttEstab_1 = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("HO.SuccOutInterEnbS1"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.HO_SuccOutInterEnbS1 = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("HO.AttOutInterEnbS1"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.HO_AttOutInterEnbS1 = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("RRC.ConnReleaseCsfb"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.RRC_ConnReleaseCsfb = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("PDCP.UpOctUl"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.PDCP_UpOctUl = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("PDCP.UpOctDl"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.PDCP_UpOctDl = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("HO.SuccOutInterEnbS1.1"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.HO_SuccOutInterEnbS1_1 = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("HO.AttOutInterEnbS1.1"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.HO_AttOutInterEnbS1_1 = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("HO.SuccOutInterFreq"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.HO_SuccOutInterFreq = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                    else if (node.InnerText.Equals("HO.AttOutExecInterFreq"))
+                    {
+                        string index = node.Attributes["p"].Value.ToString();
+                        foreach (XmlNode nd in MeasValueNodeList)
+                        {
+                            if (nd.Attributes["p"].Value.ToString().Equals(index))
+                            {
+                                string value = nd.InnerText.ToString();
+                                kpi.HO_AttOutExecInterFreq = Convert.ToInt32(value);
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message.ToString();
+                return -4;
+            }
+            return 0;
+        }
+
+        #endregion
+        }
 }

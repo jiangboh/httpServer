@@ -88,11 +88,11 @@ namespace httpServer
         /// <summary>
         /// NTP Server 1 地址
         /// </summary>
-        static public String Ntp1ServerPath = "192.168.88.101"; //Kpi
+        static public String Ntp1ServerPath = "192.168.88.101"; 
         /// <summary>
         /// NTP Server 2 地址
         /// </summary>
-        static public String Ntp2ServerPath = "192.168.88.101"; //Kpi
+        static public String Ntp2ServerPath = "192.168.88.101"; 
 
         /// <summary>
         /// AP 反向连接用户名
@@ -113,6 +113,8 @@ namespace httpServer
         /// </summary>
         static public string XmlRootNode = "Device.";
 
+        static public Dictionary<string, string> AutonomousTransferKey = new Dictionary<string, string>();
+
         #endregion
 
         /// <summary>
@@ -126,6 +128,7 @@ namespace httpServer
             Log.LogFolder = logRootDirectory;
 
             Log.WriteInfo("\n\n\n", false);
+            Log.WriteInfo("启动" + Program.FormTitle + "...");
             Log.WriteInfo("获取配置参数...");
             try
             { 
@@ -137,14 +140,14 @@ namespace httpServer
                 CloseThisApp();
                 return;
             }
-            try
-            {
-                ThisIp = ConfigurationManager.AppSettings["ThisIp"].ToString();
-            }
-            catch (Exception e)
-            {
-                Log.WriteError("读取参数(ThisIp)出错！" + e.Message);
-            }
+            //try
+            //{
+            //    ThisIp = ConfigurationManager.AppSettings["ThisIp"].ToString();
+            //}
+            //catch (Exception e)
+            //{
+            //    Log.WriteError("读取参数(ThisIp)出错！" + e.Message);
+            //}
 
             try
             {
@@ -292,6 +295,42 @@ namespace httpServer
             Application.Exit();
         }
 
+        static public void SaveConfig2Db(MySqlDbHelper myDB,string name,string value,string type)
+        {
+            string errInfo="";
+            strConfig strC = new strConfig();
+            strC.name = name;
+            strC.value = value;
+            strC.type = type;
+            if (0 == myDB.configinfo_record_create(strC,ref errInfo))
+            {
+                Log.WriteInfo(string.Format("将配置({0}={1})写入到数据库成功！" ,name,value));
+            }
+            else
+            {
+                Log.WriteError(string.Format("将配置({0}={1})写入到数据库失败！", name, value));
+            }
+        }
+		
+        /// <summary>
+        /// 保存客户端也需要使用的配置到数据库
+        /// </summary>
+        /// <param name="myDB"></param>
+        static public void SaveAllClientConfig(MySqlDbHelper myDB)
+        {
+            GlobalParameter.SaveConfig2Db(myDB, "RootDirectory", GlobalParameter.XmlRootNode, "Server");
+
+            GlobalParameter.SaveConfig2Db(myDB, "UploadServerUrl", GlobalParameter.UploadServerUrl, "Server");
+            GlobalParameter.SaveConfig2Db(myDB, "UploadServerUser", GlobalParameter.UploadServerUser, "Server");
+            GlobalParameter.SaveConfig2Db(myDB, "UploadServerPasswd", GlobalParameter.UploadServerPasswd, "Server");
+
+            GlobalParameter.SaveConfig2Db(myDB, "ConnectionRequestUsername", GlobalParameter.ConnectionRequestUsername, "Server");
+            GlobalParameter.SaveConfig2Db(myDB, "ConnectionRequestPassWd", GlobalParameter.ConnectionRequestPassWd, "Server");
+
+            GlobalParameter.SaveConfig2Db(myDB, "Ntp1ServerPath", GlobalParameter.Ntp1ServerPath, "Server");
+            GlobalParameter.SaveConfig2Db(myDB, "Ntp2ServerPath", GlobalParameter.Ntp2ServerPath, "Server");
+        }
+		
         static public void CloseThisApp()
         {
             CloseThisApp(true);

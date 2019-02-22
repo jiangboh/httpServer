@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -263,6 +264,7 @@ namespace httpServer
             }
 
             GlobalParameter.apConnHmsList.add(myDB.GetconnHSByDeviceInfo());
+            GlobalParameter.SaveAllClientConfig(myDB);
 
             Log.WriteDebug("进入后台任务处理循环...");
             while (GlobalParameter.httpServerRun)
@@ -280,13 +282,16 @@ namespace httpServer
                         }
                         else
                         {
-                            ConnectUrlInfo urlInfo = new ConnectUrlInfo(url, us, pwd);
-                            Log.WriteDebug("向AP:" + sn + "; Url:" + url + "发状请求连接消息！");
-                            HttpHandle.postUrl2Ap(urlInfo);
-                            Log.WriteDebug("设置AP(" + sn + ")的所有任务状态为发送请求状态!");
-                            if (!myDB.SetApTaskStatusToReqstBySN(sn))
+                            if (!String.IsNullOrEmpty(url) && !url.Equals("null"))
                             {
-                                Log.WriteError("设置AP(" + sn + ")的所有任务状态为发送请求状态错误!");
+                                ConnectUrlInfo urlInfo = new ConnectUrlInfo(url, us, pwd);
+                                Log.WriteDebug("向AP:" + sn + "; Url:" + url + "发状请求连接消息！");
+                                HttpHandle.postUrl2Ap(urlInfo);
+                                Log.WriteDebug("设置AP(" + sn + ")的所有任务状态为发送请求状态!");
+                                if (!myDB.SetApTaskStatusToReqstBySN(sn))
+                                {
+                                    Log.WriteError("设置AP(" + sn + ")的所有任务状态为发送请求状态错误!");
+                                }
                             }
                         }
                     }
@@ -325,8 +330,71 @@ namespace httpServer
                     Log.WriteError("实时检测AP离线状态出错！" + ex.Message);
                 }
 
-                    Thread.Sleep(100);//休眠时间
+                Thread.Sleep(100);//休眠时间
+
+                //Kpi文件存库
+                try
+                {
+                    string kpiPath = GlobalParameter.UploadServerRootPath + "\\kpi\\";
+                    string savePath = kpiPath + "\\Save\\";
+                    DirectoryInfo TheFolder = new DirectoryInfo(kpiPath);
+                    foreach (FileInfo NextFile in TheFolder.GetFiles())
+                    {
+                        int ret = 0;
+                        //忽略掉临时文件
+                        if (NextFile.Name.Substring(1, 5).Equals("davfs")) continue;
+                        strPerformance kpi = new strPerformance();
+                        String sn = "";
+                        ret = XmlHandle.GetKpiFile2Db(NextFile, ref sn, ref kpi);
+                        if (0 != ret)
+                        {
+                            Log.WriteError("解析Kpi文件[" + NextFile.Name + "]出错！出错原因:("
+                                + ret + ")" + XmlHandle.GetErrorCode(ret));
+                        }
+                        else
+                        {
+                            if (myDB.deviceinfo_record_exist(sn) == 0)
+                            {
+                                Log.WriteError("解析Kpi文件[" + NextFile.Name + "]出错！出错原因:(设备未开户)");
+                            }
+                            else
+                            {
+                                ret = myDB.performanceInfo_record_insert(sn, kpi);
+                                if (0 != ret)
+                                {
+                                    Log.WriteError("保存Kpi文件[" + NextFile.Name + "]到数据库出错！出错原因:("
+                                        + ret + ")" + myDB.get_rtv_str(ret));
+                                    continue;
+                                }
+                            }
+                        }
+                        
+                        if (false == System.IO.Directory.Exists(savePath))
+                        {
+                            //创建Save文件夹
+                            System.IO.Directory.CreateDirectory(savePath);
+                        }
+
+                        try
+                        {
+                            File.Copy(NextFile.FullName, savePath + "\\" + NextFile.Name,true);
+                        }
+                        catch (Exception ex)
+                        {
+                            Log.WriteError("复制Kpi文件[" + NextFile.Name + "]到备份路径出错！" + ex.Message);
+                        }
+                        File.Delete(NextFile.FullName);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Log.WriteError("实时检测Kpi文件，并保存到数据库出错！" + ex.Message);
+                }
+
+                Thread.Sleep(100);//休眠时间
             }
+
+
             Log.WriteError("退出后台任务处理循环！");
             GlobalParameter.CloseThisApp();
         }
@@ -368,7 +436,7 @@ namespace httpServer
             snList[1] = "EN1800S116340039";
             snList[2] = "EN1801E116480235";
             myDB.AddTaskToTable("GetParameterValue", Id,
-                 TaskType.GetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+                 TaskType.GetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), "",snList);
 
             return System.Text.Encoding.Default.GetString(xmlStr);
         }
@@ -402,7 +470,7 @@ namespace httpServer
             snList[1] = "EN1800S116340039";
             snList[2] = "EN1801E116480235";
             myDB.AddTaskToTable("SetParameterValue",Id,
-                TaskType.SetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+                TaskType.SetParameterValuesTask, System.Text.Encoding.Default.GetString(xmlStr),"", snList);
 
             return System.Text.Encoding.Default.GetString(xmlStr);
         }
@@ -427,7 +495,7 @@ namespace httpServer
             snList[1] = "EN1800S116340039";
             snList[2] = "EN1801E116480235";
             myDB.AddTaskToTable("Reboot",Id,
-               TaskType.RebootTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+               TaskType.RebootTask, System.Text.Encoding.Default.GetString(xmlStr), "",snList);
 
             return System.Text.Encoding.Default.GetString(xmlStr);
         }
@@ -455,7 +523,7 @@ namespace httpServer
             snList[1] = "EN1800S116340039";
             snList[2] = "EN1801E116480235";
             myDB.AddTaskToTable("GetLog", Id,
-                TaskType.GetLogTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+                TaskType.GetLogTask, System.Text.Encoding.Default.GetString(xmlStr), "",snList);
 
             foreach (string sn in snList)
             {
@@ -486,7 +554,7 @@ namespace httpServer
             snList[1] = "EN1800S116340039";
             snList[2] = "EN1801E116480235";
             myDB.AddTaskToTable("Upgrad", Id,
-                TaskType.UpgradTask, System.Text.Encoding.Default.GetString(xmlStr), snList);
+                TaskType.UpgradTask, System.Text.Encoding.Default.GetString(xmlStr), DateTime.Now.ToString(), snList);
 
             return System.Text.Encoding.Default.GetString(xmlStr);
         }
