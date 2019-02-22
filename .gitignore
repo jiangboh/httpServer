@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+
+#¹ıÂËÎÄ¼ş¼ĞDebug,Release,obj  
+Debug/  
+Release/  
+obj/  
