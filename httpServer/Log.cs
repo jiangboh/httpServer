@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.CompilerServices;
-using ICSharpCode.SharpZipLib.Checksums;
+using ICSharpCode.SharpZipLib.Checksum;
 using ICSharpCode.SharpZipLib.Zip;
 
 namespace httpServer

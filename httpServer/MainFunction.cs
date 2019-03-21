@@ -177,7 +177,7 @@ namespace httpServer
                 {
                     TimeSpan timeSpan = tNow - x.Time;
                     //如果前次上线时间距当前时间大于70秒，表示Ap已下线。
-                    double diff = timeSpan.TotalMinutes;
+                    double diff = timeSpan.TotalSeconds;
                     if (diff >= (GlobalParameter.ApHeartbeatTime + 10))
                     {
                         offLineList.Add(x);
@@ -212,10 +212,137 @@ namespace httpServer
             this.myDB =  new MySqlDbHelper(GlobalParameter.DB_ConnStr);
             if (!myDB.MyDbConnFlag)
             {
-                Log.WriteError("打开数据库失败！" + GlobalParameter.DB_ConnStr);
+                Log.WriteError(string.Format("打开数据库({0})失败！" , GlobalParameter.DB_ConnStr));
                 GlobalParameter.httpServerRun = false;
             }
+            else
+            {
+                Log.WriteInfo(string.Format("打开数据库({0})成功！", GlobalParameter.DB_ConnStr));
+            }
+
+            #region 启动重连线程
+
+            // 2019-02-27
+
+            //通过ParameterizedThreadStart创建线程
+            Thread thread10 = new Thread(new ParameterizedThreadStart(thread_for_rc_process));
+
+            //给方法传值
+            thread10.Start("thread_for_rc_process!\n");
+            thread10.IsBackground = true;
+
+            #endregion
         }
+
+        #region 重连处理
+
+
+        private void re_connection_db(ref MySqlDbHelper helper, string name, ref int reConnCnt)
+        {
+            try
+            {
+                string info = "";
+
+                if (helper.Conn_Is_Closed_Or_Abnormal())
+                {
+                    info = string.Format("{0}:ConnectionState is NO.", name);
+                    Logger.Trace(LogInfoType.EROR, info, "Main", LogCategory.I);
+
+                    helper.MyDbConnFlag = false;
+                    helper = new MySqlDbHelper(GlobalParameter.DB_ConnStr);
+
+                    reConnCnt++;
+                    string tmp = GlobalParameter.DB_ConnStr;
+
+                    if (helper.MyDbConnFlag == true)
+                    {
+                        info = string.Format("{0}:重连数据库:【{1}->连接数据库OK！】\n", name, tmp);
+                        Logger.Trace(LogInfoType.INFO, info, "Main", LogCategory.I);
+                        //BeginInvoke(new show_log_info_delegate(show_log_info), new object[] { info, LogInfoType.INFO });
+                    }
+                    else
+                    {
+                        info = string.Format("{0}:重连数据库:【{1}->连接数据库FAILED！】\n", name, tmp);
+                        Logger.Trace(LogInfoType.INFO, info, "Main", LogCategory.I);
+                        //BeginInvoke(new show_log_info_delegate(show_log_info), new object[] { info, LogInfoType.EROR });
+                    }
+                }
+                else
+                {
+                    info = string.Format("{0}:ConnectionState is OK.\n", name);
+                    //Logger.Trace(LogInfoType.INFO, info, "Main", LogCategory.I);
+                    //BeginInvoke(new show_log_info_delegate(show_log_info), new object[] { info, LogInfoType.INFO });
+                }
+            }
+            catch (Exception ee)
+            {
+                string info = string.Format("{0}:re_connection_db : {1}", name, ee.Message + ee.StackTrace);
+                Logger.Trace(LogInfoType.EROR, info, "Main", LogCategory.I);
+            }
+        }
+
+
+        /// <summary>
+        /// 重连线程
+        /// </summary>
+        /// <param name="obj"></param>
+        private void thread_for_rc_process(object obj)
+        {
+            #region 变量定义
+
+            /*
+             * 用于修复mysql连接的空闲时间超过8小时后，MySQL自动断开该连接的问题
+             * wait_timeout = 8*3600
+             * 即每隔fix_for_wait_timeout的时间（秒数）就访问一下数据库
+             */
+            int fix_for_wait_timeout = 20; //10*60;
+
+            int reConnCnt = 0;
+            DateTime startTimeConn = System.DateTime.Now;
+            DateTime endTimeConn = System.DateTime.Now;
+            TimeSpan tsConn = endTimeConn.Subtract(startTimeConn);
+
+
+            #endregion
+
+            while (true)
+            {
+                Thread.Sleep(50);
+
+                try
+                {
+                    #region 防止自动断开该连接的问题
+
+                    endTimeConn = System.DateTime.Now;
+                    tsConn = endTimeConn.Subtract(startTimeConn);
+
+                    if (tsConn.TotalSeconds >= fix_for_wait_timeout)
+                    {
+                        // 2018-09-29
+                        re_connection_db(ref myDB, "myDB", ref reConnCnt);
+
+                        Thread.Sleep(5);
+                        if (myDB.MyDbConnFlag)
+                        {
+                            List<string> listAllTbl = new List<string>();
+                            listAllTbl = myDB.get_all_columnName("userinfo");
+                        }
+
+                        startTimeConn = System.DateTime.Now;
+                    }
+
+                    #endregion
+                }
+                catch (Exception ee)
+                {
+                    startTimeConn = System.DateTime.Now;
+                    Logger.Trace(LogInfoType.EROR, ee.Message + ee.StackTrace, "Main", LogCategory.I);
+                    continue;
+                }
+            }
+        }
+
+        #endregion
 
         #region 主函数
         /// <summary>

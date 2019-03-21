@@ -379,6 +379,14 @@ namespace httpServer
             {
                 for (int i = 0; i < AlarmMaxNum; i++)
                 {
+                    if (String.IsNullOrEmpty(structAlarm[i].AlarmIdentifier))
+                    {
+                        continue;
+                    }
+
+                    Log.WriteDebug(string.Format("收到AP[{0}]告警:({1})({2}){3}。"
+                                   , sn, structAlarm[i].AlarmIdentifier, structAlarm[i].EventType,
+                                   structAlarm[i].AdditionalText));
                     //sctp告警
                     if (String.Compare(structAlarm[i].AlarmIdentifier, "84", true) == 0)
                     {
@@ -395,34 +403,35 @@ namespace httpServer
                         int errCode = myDB.deviceinfo_record_update(sn, deviceInfo);
                         if (0 != errCode)
                         {
-                            Log.WriteError(string.Format("更新AP S1 状态出错，出错原因:({0}){1}。"
-                                        , errCode, myDB.get_rtv_str(errCode)));
+                            Log.WriteError(string.Format("更新AP[{0}]S1状态为{1}出错，出错原因:({2}){3}。"
+                                       , sn, deviceInfo.s1Status, errCode, myDB.get_rtv_str(errCode)));
+                        }
+                        else
+                        {
+                            Log.WriteDebug(string.Format("更新AP[{0}]S1状态为{1}成功，出错原因:({2}){3}。"
+                                       , sn, deviceInfo.s1Status, errCode, myDB.get_rtv_str(errCode)));
                         }
                     }
-
                     //保存告警到数据库
-                    if (!String.IsNullOrEmpty(structAlarm[i].AlarmIdentifier))
+                    strAlarm sAlarm = new strAlarm
                     {
-                        strAlarm sAlarm = new strAlarm
-                        {
-                            sn = sn,
-                            vendor = "Bravo",
-                            flag = structAlarm[i].AlarmIdentifier,
-                            level = structAlarm[i].PerceivedSeverity,
-                            noticeType = structAlarm[i].NotificationType.Equals("NewAlarm") ? "NewAlarm" : "ClearAlarm",
-                            cause = structAlarm[i].ProbableCause,
-                            des = structAlarm[i].SpecificProblem,
-                            addDes = structAlarm[i].AdditionalText,
-                            addInfo = structAlarm[i].AdditionalInformation
-                            //time = structAlarm[i].EventTime
-                        };
+                        sn = sn,
+                        vendor = "Bravo",
+                        flag = structAlarm[i].AlarmIdentifier,
+                        level = structAlarm[i].PerceivedSeverity,
+                        noticeType = structAlarm[i].NotificationType.Equals("NewAlarm") ? "NewAlarm" : "ClearAlarm",
+                        cause = structAlarm[i].ProbableCause,
+                        des = structAlarm[i].SpecificProblem,
+                        addDes = structAlarm[i].AdditionalText,
+                        addInfo = structAlarm[i].AdditionalInformation
+                        //time = structAlarm[i].EventTime
+                    };
 
-                        string str="";
-                        int re = myDB.alarminfo_record_create(sn, sAlarm,ref str);
-                        if (re != 0)
-                        {
-                            Log.WriteError("保存AP告警信息出错。出错原因(" + re + ")" + str);
-                        }
+                    string str = "";
+                    int re = myDB.alarminfo_record_create(sn, sAlarm, ref str);
+                    if (re != 0)
+                    {
+                        Log.WriteError("保存AP告警信息出错。出错原因(" + re + ")" + str);
                     }
                 }
                 return true;

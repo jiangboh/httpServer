@@ -9,6 +9,13 @@ Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HttpServerSetup", "Setup\Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "httpServerService", "Service\httpServerService.csproj", "{A8078C45-9D4C-466F-9F4B-0D08DE2FEC3B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E0644091-9143-424B-9429-FBCE28EDABCF}"
+	ProjectSection(SolutionItems) = preProject
+		ICSharpCode.SharpZipLib.dll = ICSharpCode.SharpZipLib.dll
+		MySql.Data.dll = MySql.Data.dll
+		Newtonsoft.Json.dll = Newtonsoft.Json.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
