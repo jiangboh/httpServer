@@ -41,14 +41,14 @@ namespace httpServer
             try
             {
                 WebResponse response = request.GetResponse();
-                using (StreamReader reader = new StreamReader(response.GetResponseStream()))
-                {
-                    while (reader.Peek() != -1)
-                    {
-                        Console.WriteLine(reader.ReadLine());
-                    }
+                //using (StreamReader reader = new StreamReader(response.GetResponseStream()))
+                //{
+                //    while (reader.Peek() != -1)
+                //    {
+                //        Console.WriteLine(reader.ReadLine());
+                //    }
 
-                }
+                //}
             }
             catch (Exception ex)
             {

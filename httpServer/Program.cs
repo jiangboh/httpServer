@@ -10,7 +10,7 @@ namespace httpServer
 {
     static class Program
     {
-        static public string VERSION = "2.1.0";
+        static public string VERSION = "2.1.1";
         static public string FormTitle = "博威通小网管服务器" + "_" + VERSION;
         #region 方法四：使用的Win32函数的声明
         /// <summary>

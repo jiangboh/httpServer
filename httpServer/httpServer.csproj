@@ -55,7 +55,8 @@
     <StartupObject>httpServer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib">
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data">

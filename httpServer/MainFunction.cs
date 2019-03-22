@@ -214,24 +214,24 @@ namespace httpServer
             {
                 Log.WriteError(string.Format("打开数据库({0})失败！" , GlobalParameter.DB_ConnStr));
                 GlobalParameter.httpServerRun = false;
+
+                #region 启动重连线程
+
+                // 2019-02-27
+
+                //通过ParameterizedThreadStart创建线程
+                Thread thread10 = new Thread(new ParameterizedThreadStart(thread_for_rc_process));
+
+                //给方法传值
+                thread10.Start("thread_for_rc_process!\n");
+                thread10.IsBackground = true;
+
+                #endregion
             }
             else
             {
                 Log.WriteInfo(string.Format("打开数据库({0})成功！", GlobalParameter.DB_ConnStr));
             }
-
-            #region 启动重连线程
-
-            // 2019-02-27
-
-            //通过ParameterizedThreadStart创建线程
-            Thread thread10 = new Thread(new ParameterizedThreadStart(thread_for_rc_process));
-
-            //给方法传值
-            thread10.Start("thread_for_rc_process!\n");
-            thread10.IsBackground = true;
-
-            #endregion
         }
 
         #region 重连处理
